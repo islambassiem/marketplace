@@ -1,5 +1,5 @@
-@import 'tailwindcss';
-@import '../../vendor/livewire/flux/dist/flux.css';
+@import "tailwindcss";
+@import "../../vendor/livewire/flux/dist/flux.css";
 
 @source '../views';
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
@@ -11,8 +11,83 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+@font-face {
+    font-family: "Alexandria";
+    font-style: normal;
+    font-weight: 100;
+    src: url("../../public/fonts/Alexandria/static/Alexandria-Thin.ttf")
+        format("truetype");
+}
+
+@font-face {
+    font-family: "Alexandria";
+    font-style: normal;
+    font-weight: 200;
+    src: url("../../public/fonts/Alexandria/static/Alexandria-ExtraLight.ttf")
+        format("truetype");
+}
+
+@font-face {
+    font-family: "Alexandria";
+    font-style: normal;
+    font-weight: 300;
+    src: url("../../public/fonts/Alexandria/static/Alexandria-Light.ttf")
+        format("truetype");
+}
+
+@font-face {
+    font-family: "Alexandria";
+    font-style: normal;
+    font-weight: 400;
+    src: url("../../public/fonts/Alexandria/static/Alexandria-Regular.ttf")
+        format("truetype");
+}
+
+@font-face {
+    font-family: "Alexandria";
+    font-style: normal;
+    font-weight: 500;
+    src: url("../../public/fonts/Alexandria/static/Alexandria-Medium.ttf")
+        format("truetype");
+}
+
+@font-face {
+    font-family: "Alexandria";
+    font-style: normal;
+    font-weight: 600;
+    src: url("../../public/fonts/Alexandria/static/Alexandria-SemiBold.ttf")
+        format("truetype");
+}
+
+@font-face {
+    font-family: "Alexandria";
+    font-style: normal;
+    font-weight: 700;
+    src: url("../../public/fonts/Alexandria/static/Alexandria-Bold.ttf")
+        format("truetype");
+}
+
+@font-face {
+    font-family: "Alexandria";
+    font-style: normal;
+    font-weight: 800;
+    src: url("../../public/fonts/Alexandria/static/Alexandria-ExtraBold.ttf")
+        format("truetype");
+}
+
+@font-face {
+    font-family: "Alexandria";
+    font-style: normal;
+    font-weight: 900;
+    src: url("../../public/fonts/Alexandria/static/Alexandria-Black.ttf")
+        format("truetype");
+}
+
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-sans: "Instrument Sans", ui-sans-serif, system-ui, sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+        "Noto Color Emoji";
+    --font-alexandria: Alexandria, serif;
 
     --color-zinc-50: #fafafa;
     --color-zinc-100: #f5f5f5;
@@ -25,6 +100,18 @@
     --color-zinc-800: #262626;
     --color-zinc-900: #171717;
     --color-zinc-950: #0a0a0a;
+
+    --color-main-50: oklch(98.4% 0.014 180.72);
+    --color-main-100: oklch(95.3% 0.051 180.801);
+    --color-main-200: oklch(91% 0.096 180.426);
+    --color-main-300: oklch(85.5% 0.138 181.071);
+    --color-main-400: oklch(77.7% 0.152 181.912);
+    --color-main-500: oklch(70.4% 0.14 182.503);
+    --color-main-600: oklch(60% 0.118 184.704);
+    --color-main-700: oklch(51.1% 0.096 186.391);
+    --color-main-800: oklch(43.7% 0.078 188.216);
+    --color-main-900: oklch(38.6% 0.063 188.416);
+    --color-main-950: oklch(27.7% 0.046 192.524);
 
     --color-accent: var(--color-neutral-800);
     --color-accent-content: var(--color-neutral-800);
@@ -40,7 +127,6 @@
 }
 
 @layer base {
-
     *,
     ::after,
     ::before,
@@ -55,7 +141,7 @@
 }
 
 [data-flux-label] {
-    @apply  !mb-0 !leading-tight;
+    @apply !mb-0 !leading-tight;
 }
 
 input:focus[data-flux-control],

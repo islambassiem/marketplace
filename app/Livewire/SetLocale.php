@@ -24,6 +24,7 @@ class SetLocale extends Component
         session()->put('locale', $locale);
         $this->dispatch('language-switched');
     }
+
     public function render()
     {
         return view('livewire.set-locale');
