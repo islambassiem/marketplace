@@ -1,6 +1,6 @@
 @php
     $size = 'size-10';
-    $color = 'oklch(70.4% 0.14 182.503)';
+    $color = 'oklch(58.5% 0.233 277.117)';
 @endphp
 
 

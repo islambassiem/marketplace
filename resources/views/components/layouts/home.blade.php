@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ session()->get('locale', 'en') }}" dir="{{ session()->get('locale', 'en') === 'ar' ? 'rtl' : 'ltr' }}"
+<html lang="{{ app()->currentLocale() }}" dir="{{ app()->currentLocale() === 'ar' ? 'rtl' : 'ltr' }}"
     class="dark">
 
 <head>
@@ -82,7 +82,7 @@
     </flux:header>
 
 
-    <main class="my-10 mx-3">
+    <main class="mx-3">
         {{ $slot }}
     </main>
 

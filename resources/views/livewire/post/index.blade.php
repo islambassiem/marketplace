@@ -1,6 +1,6 @@
 <div>
-    <div class="border-2 border-dashed p-4 rounded-lg ">
-        <h2 class="text-2xl font-bold py-4 dark:text-neutral-300">{{ $post->title }}</h2>
+    <div class="border-2 border-dashed p-4 rounded-lg h-full">
+        <h2 class="text-2xl font-bold py-4 text-zinc-600 dark:text-zinc-300">{{ $post->title }}</h2>
         <!-- Alpine.js Carousel -->
         @if ($post->media->count())
             <div x-data="{
@@ -48,7 +48,7 @@
 
                 <!-- previous button -->
                 <button type="button"
-                    class="absolute left-5 top-1/2 z-20 flex rounded-full -translate-y-1/2 items-center justify-center bg-white/40 p-2 text-neutral-600 transition hover:bg-white/60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black active:outline-offset-0 dark:bg-neutral-950/40 dark:text-neutral-300 dark:hover:bg-neutral-950/60 dark:focus-visible:outline-white"
+                    class="absolute left-5 top-1/2 z-20 flex rounded-full -translate-y-1/2 items-center justify-center bg-white/40 p-2 text-neutral-600 transition hover:bg-white/60 focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-black active:outline-offset-0 dark:bg-neutral-950/40 dark:text-neutral-300 dark:hover:bg-neutral-950/60 dark:focus-visible:outline-white"
                     aria-label="previous slide" x-on:click="previous">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" fill="none"
                         stroke-width="3" class="size-5 md:size-6 pr-0.5" aria-hidden="true">
@@ -58,7 +58,7 @@
 
                 <!-- next button -->
                 <button type="button"
-                    class="absolute right-5 top-1/2 z-20 flex rounded-full -translate-y-1/2 items-center justify-center bg-white/40 p-2 text-neutral-600 transition hover:bg-white/60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black active:outline-offset-0 dark:bg-neutral-950/40 dark:text-neutral-300 dark:hover:bg-neutral-950/60 dark:focus-visible:outline-white"
+                    class="absolute right-5 top-1/2 z-20 flex rounded-full -translate-y-1/2 items-center justify-center bg-white/40 p-2 text-neutral-600 transition hover:bg-white/60 focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-black active:outline-offset-0 dark:bg-neutral-950/40 dark:text-neutral-300 dark:hover:bg-neutral-950/60 dark:focus-visible:outline-white"
                     aria-label="next slide" x-on:click="next">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" fill="none"
                         stroke-width="3" class="size-5 md:size-6 pl-0.5" aria-hidden="true">
@@ -97,20 +97,20 @@
                 </div>
             </div>
         @endif
-        <p class="py-1 font-bold underline text-neutral-500 dark:text-neutral-300">{{ __('Price') }}:</p>
-        <p class="dark:text-neutral-300">${{ number_format($post->price, 2) }}</p>
-        <p class="py-1 font-bold underline text-neutral-500 dark:text-neutral-300">{{ __('Description') }}:</p>
-        <p class="text-justify text-lg dark:text-neutral-300">{{ $post->description }}</p>
+        <p class="py-1 font-bold underline text-zinc-600 dark:text-zinc-300">{{ __('Price') }}:</p>
+        <p class="text-zinc-600 dark:text-zinc-300">${{ number_format($post->price, 2) }}</p>
+        <p class="py-1 font-bold underline text-zinc-600 dark:text-zinc-300">{{ __('Description') }}:</p>
+        <p class="text-justify text-lg text-zinc-600 dark:text-zinc-300">{{ $post->description }}</p>
     </div>
     @if ($post->user_id !== auth()->user()?->id)
         <div class="mt-3">
-            <p class="font-bold">{{ __('Seller Information') }}</p>
-            <a class="flex items-center gap-3 mt-3 hover:underline cursor-pointer"
+            <p class="font-bold text-zinc-600 dark:text-zinc-300">{{ __('Seller Information') }}</p>
+            <a class="flex items-center gap-3 mt-3 hover:underline cursor-pointer text-zinc-600 dark:text-zinc-300"
                 wire:click="message({{ $post->user->id }})">
                 <flux:avatar :initials="$post->user->initials()" />
                 <span>{{ $post->user->name }}</span>
             </a>
-            <p class="mt-2 text-neutral-500 dark:text-neutral-400 text-xs">{{ $post->created_at->diffForHumans() }}</p>
+            <p class="mt-2 pb-3 text-neutral-500 dark:text-neutral-400 text-xs">{{ $post->created_at->diffForHumans() }}</p>
         </div>
     @endif
 </div>

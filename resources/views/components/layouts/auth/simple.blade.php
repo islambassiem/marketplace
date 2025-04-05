@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ session()->get('locale', 'en') }}" dir="{{ session()->get('locale', 'en') === 'ar' ? 'rtl' : 'ltr' }}" class="dark">
+<html lang="{{ app()->currentLocale() }}" dir="{{ app()->currentLocale() === 'ar' ? 'rtl' : 'ltr' }}" class="dark">
     <head>
         @include('partials.head')
     </head>

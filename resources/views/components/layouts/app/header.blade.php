@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ session('locale') }}" class="$store.darkMode.dark" dir="{{ session('locale') === 'ar' ? 'rtl' : 'ltr' }}"
+<html lang="{{ app()->currentLocale() }}" dir="{{ app()->currentLocale() === 'ar' ? 'rtl' : 'ltr' }}"
     x-data>
 
 <head>
