@@ -98,9 +98,19 @@ class Edit extends Component
     public function delete($image): void
     {
         $media = Media::findOrFail($image);
-        abort_if(!in_array($media->id, $this->post->media->pluck('id')->toArray()), 403);
-        $media->delete();
-        $this->dispatch('media-deleted');
+        $images = $this->post->media->pluck('id')->toArray();
+        abort_if(!in_array($media->id, $images), 403);
+        if(count($images) > 1){
+            $media->delete();
+            $this->success(
+                __('The image has been deleted successfully'),
+            );
+            $this->dispatch('media-deleted');
+        }else{
+            $this->error(
+                __('This is the only image; you cannot deleted it'),
+            );
+        }
     }
 
     public function rules(): array

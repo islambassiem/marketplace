@@ -99,6 +99,8 @@
     "The ad has been updated successfully": "تم تعديل الاعلان بنجاح",
     "The ad has been refreshed successfully": "تم تحديث الاعلان بنجاح",
     "The ad has been deleted successfully": "تم حذف الاعلان بنجاح",
+    "The image has been deleted successfully": "تم حذف الصورة بنجاح",
 
-    "Ad has been created successfully": "تم إنشاء الاعلان بنجاح"
+    "Ad has been created successfully": "تم إنشاء الاعلان بنجاح",
+    "This is the only image; you cannot deleted it": "هذه هي الصورة الوحيدة; لا يمكنك حذفها"
 }

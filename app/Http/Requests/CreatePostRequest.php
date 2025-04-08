@@ -27,17 +27,40 @@ class CreatePostRequest extends FormRequest
             'price' => 'required|numeric|min:0',
             'category_id' => 'required|exists:categories,id',
             'city_id' => 'required|exists:cities,id',
+            'images' => 'required|array|max:5',
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ];
+    }
+    public function messages(): array
+    {
+        $maxNumber = env('MAX_UPLOAD_NUMNER', 5);
+        $maxSize = env('MAX_UPLOAD_SIZE', 2048) / 1024;
+
+        return [
+            'title.required' => __('post.'.'The title is required.'),
+            'title.max' => __('post.'.'The title cannot be longer than 255 characters.'),
+
+            'description.required' => __('post.'.'The description is required.'),
+            'description.max' => __('post.'.'The description cannot be longer than 65,535 characters.'),
+
+            'price.required' => __('post.'.'The price is required.'),
+            'price.numeric' => __('post.'.'The price must be a number.'),
+            'price.min' => __('post.'.'The price cannot be negative.'),
+
+            'category_id.required' => __('post.'.'Please select a category.'),
+            'category_id.exists' => __('post.'.'The selected category is invalid.'),
+
+            'city_id.required' => __('post.'.'Please select a city.'),
+            'city_id.exists' => __('post.'.'The selected city is invalid.'),
+
+            'images.required' => __('post.'.'Please upload at least one image.'),
+            'images.array' => __('post.'.'The images must be in an array format.'),
+            'images.max' => __('post.'."You can upload up to $maxNumber images only."),
+
+            'images.*.image' => __('post.'.'The uploaded file must be an image.'),
+            'images.*.mimes' => __('post.'.'Images must be of type: jpeg, png, jpg, gif, or svg.'),
+            'images.*.max' => __('post.'."Each image must not be larger than $maxSize MB."),
         ];
     }
 
-    public function attributes(): array
-    {
-        return [
-            'title' => __('Title'),
-            'description' => __('Description'),
-            'price' => __('Price'),
-            'category_id' => __('Category'),
-            'city_id' => __('City'),
-        ];
-    }
 }

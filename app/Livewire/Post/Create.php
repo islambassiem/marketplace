@@ -10,10 +10,15 @@ use Illuminate\View\View;
 use Livewire\Attributes\Computed;
 use App\Actions\Post\CreatePostAction;
 use App\Http\Requests\CreatePostRequest;
+use Illuminate\Support\Facades\Validator;
+use Livewire\Features\SupportFileUploads\WithFileUploads;
 
 class Create extends Component
 {
     use Toast;
+
+    use WithFileUploads;
+
     public $patentId;
 
     public $provinceId;
@@ -27,6 +32,8 @@ class Create extends Component
     public $price;
 
     public $description;
+    
+    public $images;
 
     #[Computed()]
     public function parents()
@@ -76,10 +83,15 @@ class Create extends Component
         return (new CreatePostRequest)->rules();
     }
 
-    public function store(CreatePostAction $request): void
+    public function messages(): array
+    {
+        return (new CreatePostRequest)->messages();
+    }
+
+    public function store(CreatePostAction $action): void
     {
         $validated = $this->validate();
-        $request->handle($validated);
+        $action->handle($validated);
         $this->success(
         __('Ad has been created successfully'),
             redirectTo: route('dashboard')
