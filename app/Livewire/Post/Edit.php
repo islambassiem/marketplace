@@ -3,16 +3,17 @@
 namespace App\Livewire\Post;
 
 use App\Actions\Post\EditPostAction;
+use App\Http\Requests\UpdatePostRequest;
+use App\Models\Category;
 use App\Models\City;
 use App\Models\Post;
-use Mary\Traits\Toast;
-use Livewire\Component;
-use App\Models\Category;
-use Livewire\Attributes\On;
-use Livewire\Attributes\Computed;
 use Illuminate\Contracts\View\View;
-use App\Http\Requests\UpdatePostRequest;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\Gate;
+use Livewire\Attributes\Computed;
+use Livewire\Attributes\On;
+use Livewire\Component;
+use Mary\Traits\Toast;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class Edit extends Component
@@ -107,13 +108,11 @@ class Edit extends Component
         return (new UpdatePostRequest)->rules();
     }
 
-    public function save()
+    public function save(EditPostAction $action)
     {
         $validated = $this->validate();
-
-        // (new EditPostAction())->handle($this->post->id, $validated);
-
-        $this->post->update($validated);
+        $this->authorize('update', $this->post);
+        $action->handle($this->post->id, $validated);
 
         $this->success(
             __('The ad has been updated successfully'),

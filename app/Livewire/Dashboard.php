@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Actions\Post\DeleteAction;
 use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Computed;
@@ -46,10 +47,10 @@ class Dashboard extends Component
         $this->success(__('The ad has been refreshed successfully'));
     }
 
-    public function delete(Post $post)
+    public function delete(Post $post, DeleteAction $action)
     {
         $this->authorize('delete', $post);
-        $post->delete();
+        $action->handle($post);
         $this->success(__('The ad has been deleted successfully'));
     }
 
