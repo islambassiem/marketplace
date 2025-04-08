@@ -2,14 +2,17 @@
 
 namespace App\Livewire\Post;
 
-use App\Http\Requests\UpdatePostRequest;
-use App\Models\Category;
+use App\Actions\Post\EditPostAction;
 use App\Models\City;
 use App\Models\Post;
-use Livewire\Attributes\Computed;
-use Livewire\Attributes\On;
-use Livewire\Component;
 use Mary\Traits\Toast;
+use Livewire\Component;
+use App\Models\Category;
+use Livewire\Attributes\On;
+use Livewire\Attributes\Computed;
+use Illuminate\Contracts\View\View;
+use App\Http\Requests\UpdatePostRequest;
+use Illuminate\Database\Eloquent\Collection;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class Edit extends Component
@@ -34,7 +37,7 @@ class Edit extends Component
 
     public $images;
 
-    public function mount(Post $post)
+    public function mount(Post $post): void
     {
         $this->authorize('view', $post);
         $this->post = $post;
@@ -49,38 +52,38 @@ class Edit extends Component
     }
 
     #[Computed()]
-    public function parents()
+    public function parents(): Collection
     {
         return Category::whereNull('parent_id')->get(['id', 'name_en', 'name_ar']);
     }
 
     #[Computed()]
-    public function children()
+    public function children(): Collection
     {
-        if (! is_null($this->patentId)) {
+        if ($this->patentId !== null) {
             return Category::where('parent_id', $this->patentId)->get(['id', 'name_en', 'name_ar']);
         }
 
-        return collect();
+        return collect(new Category());
     }
 
     #[Computed()]
-    public function provinces()
+    public function provinces(): Collection
     {
         return City::whereNull('province_id')->get(['id', 'city_en', 'city_ar']);
     }
 
     #[Computed()]
-    public function cities()
+    public function cities(): Collection
     {
-        if (! is_null($this->provinceId)) {
+        if (!is_null($this->provinceId)) {
             return City::where('province_id', $this->provinceId)->get(['id', 'city_en', 'city_ar']);
         }
 
-        return collect();
+        return collect(new City());
     }
 
-    public function updating($property, $value)
+    public function updating($property, $value): void
     {
         if ($property === 'patentId') {
             $this->category_id = null;
@@ -91,15 +94,15 @@ class Edit extends Component
         }
     }
 
-    public function delete($image)
+    public function delete($image): void
     {
         $media = Media::findOrFail($image);
-        abort_if(! in_array($media->id, $this->post->media->pluck('id')->toArray()), 403);
+        abort_if(!in_array($media->id, $this->post->media->pluck('id')->toArray()), 403);
         $media->delete();
         $this->dispatch('media-deleted');
     }
 
-    public function rules()
+    public function rules(): array
     {
         return (new UpdatePostRequest)->rules();
     }
@@ -107,6 +110,8 @@ class Edit extends Component
     public function save()
     {
         $validated = $this->validate();
+
+        // (new EditPostAction())->handle($this->post->id, $validated);
 
         $this->post->update($validated);
 
@@ -117,7 +122,7 @@ class Edit extends Component
     }
 
     #[On('media-deleted')]
-    public function render()
+    public function render(): View
     {
         return view('livewire.post.edit');
     }

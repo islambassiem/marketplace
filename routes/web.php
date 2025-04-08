@@ -1,6 +1,6 @@
 <?php
 
-use App\Livewire\CreatePost;
+use App\Livewire\Post\Create;
 use App\Livewire\Dashboard;
 use App\Livewire\Home;
 use App\Livewire\Post\Edit;
@@ -23,7 +23,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('settings/password', Password::class)->name('settings.password');
     Route::get('settings/appearance', Appearance::class)->name('settings.appearance');
 
-    Route::get('/create', CreatePost::class)->name('post.create');
+    Route::get('/create', Create::class)->name('post.create');
     Route::get('post/{post}/edit', Edit::class)->name('post.edit');
 });
 

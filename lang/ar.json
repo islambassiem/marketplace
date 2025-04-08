@@ -98,5 +98,7 @@
 
     "The ad has been updated successfully": "تم تعديل الاعلان بنجاح",
     "The ad has been refreshed successfully": "تم تحديث الاعلان بنجاح",
-    "The ad has been deleted successfully": "تم حذف الاعلان بنجاح"
+    "The ad has been deleted successfully": "تم حذف الاعلان بنجاح",
+
+    "Ad has been created successfully": "تم إنشاء الاعلان بنجاح"
 }
