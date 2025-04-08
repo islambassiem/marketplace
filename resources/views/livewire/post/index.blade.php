@@ -41,7 +41,7 @@
                     <div class="flex transition-transform duration-500 ease-in-out"
                         :style="`transform: translateX(${document.documentElement.dir === 'rtl' ? '' : '-'}${currentSlide * 100}%)`">
                         @foreach ($post->getMedia() as $media)
-                            <img src="{{ $media->getUrl() }}" alt="Media {{ $loop->index + 1 }}" class="w-full">
+                            <img src="{{ $media->getUrl() }}" alt="Media {{ $loop->index + 1 }}" class="">
                         @endforeach
                     </div>
                 </div>

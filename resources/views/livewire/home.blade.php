@@ -95,9 +95,9 @@
     </form>
     <div class="grid auto-rows-min gap-4 md:grid-cols-3 mx-auto">
         @foreach ($posts as $post)
-            <a href="{{ route('post', $post->id) }}" wire:navigate>
+            <div>
                 <x-post :post="$post" wire:key="{{ $post->id }}" />
-            </a>
+            </div>
         @endforeach
     </div>
     <div x-intersect.full="$wire.load()"></div>

@@ -16,9 +16,9 @@
 
         <!-- Per Page Selector -->
         <div>
-            <label for="perPage">{{ __('Ads per page') }}</label>
+            <label for="perPage" class="text-zinc-800 dark:text-zinc-300">{{ __('Ads per page') }}</label>
             <select id="perPage" wire:change="setItemsPerPage($event.target.value)"
-                class="m-2 p-2 rounded-2xl border border-indigo-500">
+                class="rounded-2xl border border-indigo-500 text-zinc-800">
                 <option value="3">3</option>
                 <option value="5">5</option>
                 <option value="10" selected>10</option>

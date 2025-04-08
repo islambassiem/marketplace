@@ -1,7 +1,11 @@
 <div class="max-w-md bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
 
     <div class="p-4 rounded-lg ">
-        <h2 class="text-2xl font-bold py-4 text-zinc-600 dark:text-zinc-300">{{ $post->title }}</h2>
+        <a href="{{ route('post', $post->id) }}" class="hover:underline">
+            <h2  class="text-2xl font-bold py-4 text-zinc-600 dark:text-zinc-300">
+                {{ $post->title }}
+            </h2>
+        </a>
         <!-- Alpine.js Carousel -->
         @if (count($post->getMedia()) > 0)
             <div x-data="{
@@ -42,7 +46,7 @@
                     <div class="flex transition-transform duration-500 ease-in-out"
                         :style="`transform: translateX(${document.documentElement.dir === 'rtl' ? '' : '-'}${currentSlide * 100}%)`">
                         @foreach ($post->getMedia() as $media)
-                            <img src="{{ $media->getUrl() }}" alt="Media {{ $loop->index + 1 }}" class="w-full">
+                            <img src="{{ $media->getUrl() }}" alt="Media {{ $loop->index + 1 }}" class="">
                         @endforeach
                     </div>
                 </div>
@@ -98,9 +102,11 @@
                 </div>
             </div>
         @endif
-        <p class="py-1 font-bold underline text-zinc-600 dark:text-zinc-300">{{ __('Price') }}:</p>
-        <p class="text-zinc-600 dark:text-zinc-300">${{ number_format($post->price, 2) }}</p>
-        <p class="py-1 font-bold underline text-zinc-600 dark:text-zinc-300">{{ __('Description') }}:</p>
-        <p class="text-justify text-lg text-zinc-600 dark:text-zinc-300">{{ Str::limit($post->description, 100) }}</p>
+        <a href="{{ route('post', $post->id) }}" wire:navigate class="hover:underline">
+            <p class="py-1 font-bold underline text-zinc-600 dark:text-zinc-300">{{ __('Price') }}:</p>
+            <p class="text-zinc-600 dark:text-zinc-300">${{ number_format($post->price, 2) }}</p>
+            <p class="py-1 font-bold underline text-zinc-600 dark:text-zinc-300">{{ __('Description') }}:</p>
+            <p class="text-justify text-lg text-zinc-600 dark:text-zinc-300">{{ Str::limit($post->description, 100) }}</p>
+        </a>
     </div>
 </div>
