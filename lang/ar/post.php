@@ -23,4 +23,5 @@ return [
     "Each image must not be larger than $maxSize MB." => "لا يمكن ان يكون كل صورة اكبر من $maxSize MB.",
     "The selected province is invalid." => "المقاطعة المحددة غير صالحة.",
     "This is the only image; you cannot deleted it" => "هذه هي الصورة الوحيدة; لا يمكنك حذفها",
+    "Images must be of type: jpeg, png, jpg, gif, or svg." => "الصور يجب ان تكون من نوع jpeg, png, jpg, gif, او svg.",
 ];
