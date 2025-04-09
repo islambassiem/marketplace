@@ -1,5 +1,5 @@
 <div class="flex w-full flex-1 flex-col gap-4 rounded-xl">
-    <form wire:submit="query" class="mx-5">
+    <form wire:submit="query" class="mx-5 mt-5">
         <div class="grid grid-cols-12 gap-2">
             <div class="relative col-span-9 sm:col-span-10 lg:col-span-11 ">
                 <label for="search"

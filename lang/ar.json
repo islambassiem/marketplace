@@ -102,5 +102,11 @@
     "The image has been deleted successfully": "تم حذف الصورة بنجاح",
 
     "Ad has been created successfully": "تم إنشاء الاعلان بنجاح",
-    "This is the only image; you cannot deleted it": "هذه هي الصورة الوحيدة; لا يمكنك حذفها"
+    "This is the only image; you cannot deleted it": "هذه هي الصورة الوحيدة; لا يمكنك حذفها",
+    "Drag & drop files here or click to upload": "اسحب الملفات هنا او انقر لتحميلها",
+    "Max size": "حجم الملف",
+    "each": "لكل ملف",
+    "Max": "الحد الاقصى",
+    "files": "ملفات",
+    "Are you sure you want to delete this post?": "هل انت متاكد من حذف هذا الاعلان؟"
 }

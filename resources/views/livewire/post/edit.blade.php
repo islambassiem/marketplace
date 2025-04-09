@@ -129,7 +129,7 @@
         </div>
         @if ($post->getMedia()->count() < env('MAX_UPLOAD_NUMNER', 5))
             <div class="col-span-12">
-                <x-file-upload wire:model='photos' :postMediaCount="{{ $post->getMedia()->count() }}" />
+                <x-file-upload wire:model='photos' :postMediaCount="$post->getMedia()->count()" />
                 @error('photos')
                     <div class="text-sm text-red-500 mb-2">{{ $message }}</div>
                 @enderror

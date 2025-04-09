@@ -27,7 +27,7 @@
         this.files.splice(index, 1);
     }
 }" x-on:drop.prevent="handleFiles($event)" x-on:dragover.prevent
-    class="border-dashed border-2 border-gray-300 rounded-lg p-6 relative bg-white">
+    class="border-dashed border-2  rounded-lg p-6 relative text-gray-900 bg-gray-50 border-gray-300  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white ">
 
     <input type="file" multiple class="hidden" x-ref="fileInput" x-on:change="handleFiles($event)" accept="image/*"
         {{ $attributes->whereStartsWith('wire:model') }} />
@@ -38,9 +38,9 @@
             viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M7 16V4m0 0L4 7m3-3l3 3m10 7v8m0 0l-3-3m3 3l3-3" />
         </svg>
-        <p>Drag & drop files here or click to upload</p>
-        <p class="text-sm text-gray-400 mt-1">Max {{ $maxFiles - $postMediaCount }} files. Max size {{ $maxSize / 1024 }}MB
-            each.</p>
+        <p>{{ __('Drag & drop files here or click to upload') }}</p>
+        <p class="text-sm text-gray-400 mt-1">{{ __('Max') }} {{ $maxFiles - $postMediaCount }} {{ __('files') }}. {{ __('Max size') }} {{ $maxSize / 1024 }}MB
+            {{ __('each') }}.</p>
     </button>
 
     <template x-for="(file, index) in files" :key="index">
