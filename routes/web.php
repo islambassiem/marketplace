@@ -1,8 +1,8 @@
 <?php
 
-use App\Livewire\Post\Create;
 use App\Livewire\Dashboard;
 use App\Livewire\Home;
+use App\Livewire\Post\Create;
 use App\Livewire\Post\Edit;
 use App\Livewire\Post\Index;
 use App\Livewire\Settings\Appearance;

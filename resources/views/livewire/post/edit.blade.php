@@ -127,6 +127,14 @@
                 @endforeach
             </div>
         </div>
+        @if ($post->getMedia()->count() < env('MAX_UPLOAD_NUMNER', 5))
+            <div class="col-span-12">
+                <input type="file" wire:model="photos" multiple accept="image/*">
+                @error('photos')
+                    {{-- <div class="text-sm text-red-500 mb-2">{{ $message }}</div> --}}
+                @enderror
+            </div>
+        @endif
         <div class="col-span-12 flex justify-end items-center">
             <x-form.button type="submit" class="flex justify-center items-center gap-1">
                 <flux:icon.bookmark-square />
@@ -135,4 +143,3 @@
         </div>
     </div>
 </form>
-

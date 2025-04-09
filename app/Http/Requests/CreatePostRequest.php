@@ -31,11 +31,9 @@ class CreatePostRequest extends FormRequest
             'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     }
+
     public function messages(): array
     {
-        $maxNumber = env('MAX_UPLOAD_NUMNER', 5);
-        $maxSize = env('MAX_UPLOAD_SIZE', 2048) / 1024;
-
         return [
             'title.required' => __('post.'.'The title is required.'),
             'title.max' => __('post.'.'The title cannot be longer than 255 characters.'),
@@ -55,12 +53,11 @@ class CreatePostRequest extends FormRequest
 
             'images.required' => __('post.'.'Please upload at least one image.'),
             'images.array' => __('post.'.'The images must be in an array format.'),
-            'images.max' => __('post.'."You can upload up to $maxNumber images only."),
+            'images.max' => __('post.'.'You can upload up to'.env('MAX_UPLOAD_NUMNER', 5).'images only.'),
 
             'images.*.image' => __('post.'.'The uploaded file must be an image.'),
             'images.*.mimes' => __('post.'.'Images must be of type: jpeg, png, jpg, gif, or svg.'),
-            'images.*.max' => __('post.'."Each image must not be larger than $maxSize MB."),
+            'images.*.max' => __('post.'.'Each image must not be larger than '.env('MAX_UPLOAD_SIZE', 2048) / 1024 .' MB.'),
         ];
     }
-
 }

@@ -96,7 +96,7 @@
                     <div class="flex justify-center mt-2 space-x-2">
                         @foreach ($post->media as $index => $media)
                             <button x-on:click="currentSlide = {{ $index }}"
-                                :class="currentSlide === {{ $index }} ? 'bg-blue-500' : 'bg-gray-300'"
+                                :class='currentSlide == "{{ $index }}" ? "bg-blue-500" : "bg-gray-300"'
                                 class="w-3 h-3 rounded-full">
                             </button>
                         @endforeach

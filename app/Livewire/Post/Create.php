@@ -2,21 +2,19 @@
 
 namespace App\Livewire\Post;
 
-use App\Models\City;
-use Mary\Traits\Toast;
-use Livewire\Component;
-use App\Models\Category;
-use Illuminate\View\View;
-use Livewire\Attributes\Computed;
 use App\Actions\Post\CreatePostAction;
 use App\Http\Requests\CreatePostRequest;
-use Illuminate\Support\Facades\Validator;
+use App\Models\Category;
+use App\Models\City;
+use Illuminate\View\View;
+use Livewire\Attributes\Computed;
+use Livewire\Component;
 use Livewire\Features\SupportFileUploads\WithFileUploads;
+use Mary\Traits\Toast;
 
 class Create extends Component
 {
     use Toast;
-
     use WithFileUploads;
 
     public $patentId;
@@ -32,7 +30,7 @@ class Create extends Component
     public $price;
 
     public $description;
-    
+
     public $images;
 
     #[Computed()]
@@ -93,14 +91,14 @@ class Create extends Component
         $validated = $this->validate();
         $action->handle($validated);
         $this->success(
-        __('Ad has been created successfully'),
+            __('Ad has been created successfully'),
             redirectTo: route('dashboard')
         );
     }
 
     public function render(): View
     {
-        return view('livewire.create-post', [
+        return view('livewire.post.create', [
             'parents' => $this->parents(),
             'children' => $this->children(),
             'provinces' => $this->provinces(),

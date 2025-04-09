@@ -9,16 +9,17 @@ use App\Models\City;
 use App\Models\Post;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Support\Facades\Gate;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\On;
 use Livewire\Component;
+use Livewire\Features\SupportFileUploads\WithFileUploads;
 use Mary\Traits\Toast;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class Edit extends Component
 {
     use Toast;
+    use WithFileUploads;
 
     public Post $post;
 
@@ -37,6 +38,8 @@ class Edit extends Component
     public $city_id;
 
     public $images;
+
+    public $photos;
 
     public function mount(Post $post): void
     {
@@ -65,7 +68,7 @@ class Edit extends Component
             return Category::where('parent_id', $this->patentId)->get(['id', 'name_en', 'name_ar']);
         }
 
-        return collect(new Category());
+        return collect(new Category);
     }
 
     #[Computed()]
@@ -77,11 +80,11 @@ class Edit extends Component
     #[Computed()]
     public function cities(): Collection
     {
-        if (!is_null($this->provinceId)) {
+        if (! is_null($this->provinceId)) {
             return City::where('province_id', $this->provinceId)->get(['id', 'city_en', 'city_ar']);
         }
 
-        return collect(new City());
+        return collect(new City);
     }
 
     public function updating($property, $value): void
@@ -99,14 +102,14 @@ class Edit extends Component
     {
         $media = Media::findOrFail($image);
         $images = $this->post->media->pluck('id')->toArray();
-        abort_if(!in_array($media->id, $images), 403);
-        if(count($images) > 1){
+        abort_if(! in_array($media->id, $images), 403);
+        if (count($images) > 1) {
             $media->delete();
             $this->success(
                 __('The image has been deleted successfully'),
             );
             $this->dispatch('media-deleted');
-        }else{
+        } else {
             $this->error(
                 __('This is the only image; you cannot deleted it'),
             );

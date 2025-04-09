@@ -18,6 +18,21 @@ class EditPostAction
         $post->category_id = $postData['category_id'];
         $post->city_id = $postData['city_id'];
         $post->save();
+
+        $length = env('MAX_UPLOAD_NUMNER') - count($post->media) <= 0 ? 0 : env('MAX_UPLOAD_NUMNER') - count($post->media);
+        for ($i = 0; $i < $length; $i++) {
+            $this->insetImage($post, $postData['photos'][$i]);
+        }
+
         return $post;
+    }
+
+    private function insetImage($post, $image)
+    {
+        $fileName = md5(rand().$image->getClientOriginalName());
+        $post->addMedia($image)
+            ->usingFileName($fileName.'.'.$image->getClientOriginalExtension())
+            ->usingName($fileName)
+            ->toMediaCollection();
     }
 }
