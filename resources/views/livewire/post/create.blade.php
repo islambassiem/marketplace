@@ -98,7 +98,7 @@
             @enderror
         </div>
         <div class="col-span-12">
-            <input type="file" wire:model="images" multiple accept="image/*">
+            <x-file-upload wire:model='images' postMediaCount="0"/>
             @error('images')
                 <div class="text-sm text-red-500 mb-2">{{ $message }}</div>
             @enderror

@@ -19,11 +19,13 @@ class EditPostAction
         $post->city_id = $postData['city_id'];
         $post->save();
 
-        $length = env('MAX_UPLOAD_NUMNER') - count($post->media) <= 0 ? 0 : env('MAX_UPLOAD_NUMNER') - count($post->media);
+        if ($postData['photos'] !== null) {
+            $length = env('MAX_UPLOAD_NUMNER') - count($post->media) <= 0 ? 0 : env('MAX_UPLOAD_NUMNER') - count($post->media);
 
-        $photos = array_slice($postData['photos'], 0, $length);
-        foreach ($photos as $image) {
-            $this->insetImage($post, $image);
+            $photos = array_slice($postData['photos'], 0, $length);
+            foreach ($photos as $image) {
+                $this->insetImage($post, $image);
+            }
         }
 
         return $post;

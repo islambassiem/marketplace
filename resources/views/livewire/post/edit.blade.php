@@ -40,7 +40,7 @@
                 <div
                     class="col-span-6 relative flex w-full lg:max-w-lg flex-col gap-1 text-neutral-600 dark:text-neutral-300">
                     <label for="child" class="w-fit pl-0.5 text-sm">{{ __('Sub category') }}</label>
-                    <select wire:model.change="category_id" id="category_id"
+                    <select wire:model.change="category_id" id="child"
                         class="p-3 w-full appearance-none rounded-md border border-neutral-300 bg-neutral-50 py-2 text-sm focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-black disabled:cursor-not-allowed disabled:opacity-75 dark:border-neutral-700 dark:bg-neutral-900/50 dark:focus-visible:outline-white">
                         <option selected>{{ __('All Categories') }}</option>
                         @foreach ($this->children as $child)
@@ -129,9 +129,9 @@
         </div>
         @if ($post->getMedia()->count() < env('MAX_UPLOAD_NUMNER', 5))
             <div class="col-span-12">
-                <input type="file" wire:model="photos" multiple accept="image/*">
+                <x-file-upload wire:model='photos' :postMediaCount="{{ $post->getMedia()->count() }}" />
                 @error('photos')
-                    {{-- <div class="text-sm text-red-500 mb-2">{{ $message }}</div> --}}
+                    <div class="text-sm text-red-500 mb-2">{{ $message }}</div>
                 @enderror
             </div>
         @endif
