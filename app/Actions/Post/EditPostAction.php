@@ -20,8 +20,10 @@ class EditPostAction
         $post->save();
 
         $length = env('MAX_UPLOAD_NUMNER') - count($post->media) <= 0 ? 0 : env('MAX_UPLOAD_NUMNER') - count($post->media);
-        for ($i = 0; $i < $length; $i++) {
-            $this->insetImage($post, $postData['photos'][$i]);
+
+        $photos = array_slice($postData['photos'], 0, $length);
+        foreach ($photos as $image) {
+            $this->insetImage($post, $image);
         }
 
         return $post;
