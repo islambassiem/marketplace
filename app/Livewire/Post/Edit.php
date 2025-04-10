@@ -108,12 +108,13 @@ class Edit extends Component
             $this->success(
                 __('The image has been deleted successfully'),
             );
-            $this->dispatch('media-deleted');
         } else {
             $this->error(
                 __('This is the only image; you cannot deleted it'),
+                redirectTo: route('dashboard')
             );
         }
+        $this->dispatch('media-deleted');
     }
 
     public function rules(): array
