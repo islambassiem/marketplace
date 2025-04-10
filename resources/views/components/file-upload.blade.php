@@ -13,11 +13,20 @@
         const newFiles = Array.from(event.target.files || event.dataTransfer.files);
         for (let file of newFiles) {
             if (this.files.length >= this.maxFiles) {
-                alert(`You can only upload up to ${this.maxFiles} files.`);
+                Swal.fire({
+                    'title': '{{ __('Error') }}',
+                    'text': `{{ __('You can only upload up to') }} ${this.maxFiles} {{ __('files') }}.`,
+                    'icon': 'error'
+                });
                 break;
             }
             if (file.size / 1024 > this.maxSize) {
-                alert(`${file.name} is too large. Max size is ${this.maxSize / 1024 }MB.`);
+                Swal.fire({
+                    'title': '{{ __('Error') }}',
+                    'text': `${file.name} {{ __('is too large. Max size is') }} ${this.maxSize / 1024 }MB.`,
+                    'icon': 'error',
+                    'confirmButtonText': '{{ __('Ok') }}'
+                })
                 continue;
             }
             this.files.push(file);
@@ -52,9 +61,4 @@
             </button>
         </div>
     </template>
-
-    <!-- Hidden input for Livewire compatibility -->
-    {{-- <template x-for="(file, index) in files" :key="'input-' + index">
-        <input type="hidden" :name="'{{ $name }}[]'" :value="file">
-    </template> --}}
 </div>

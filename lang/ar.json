@@ -110,5 +110,9 @@
     "files": "ملفات",
     "Are you sure you want to delete this post?": "هل انت متاكد من حذف هذا الاعلان؟",
     "Are you sure you want to delete this image?": "هل انت متاكد من حذف هذه الصورة",
-    "Yes, I'm sure": "هل انت متاكد؟"
+    "Yes, I'm sure": "هل انت متاكد؟",
+    "Ok": "حسناً",
+    "Error": "حدث خطأ",
+    "is too large. Max size is": "كبير جداً. الحد الأقصى هو",
+    "You can only upload up to": "يمكنك الرفع لغاية"
 }
