@@ -51,6 +51,7 @@ class Dashboard extends Component
     {
         $this->authorize('delete', $post);
         $action->handle($post);
+        $this->dispatch('postDeleted', $post->id);
         $this->success(__('The ad has been deleted successfully'));
     }
 
