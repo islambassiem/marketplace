@@ -52,7 +52,13 @@ class Edit extends Component
         $this->category_id = $post->category_id;
         $this->city_id = $post->city_id;
         $this->provinceId = City::find($post->city_id)->parent->id;
-        $this->images = $post->getMedia();
+        // $this->images = $post->getMedia();
+    }
+
+    #[Computed()]
+    public function images()
+    {
+        return $this->post->getMedia();
     }
 
     #[Computed()]
@@ -105,6 +111,7 @@ class Edit extends Component
         abort_if(! in_array($media->id, $images), 403);
         if (count($images) > 1) {
             $media->delete();
+            $this->dispatch('media-deleted');
             $this->success(
                 __('The image has been deleted successfully'),
             );
@@ -114,7 +121,7 @@ class Edit extends Component
                 redirectTo: route('dashboard')
             );
         }
-        $this->dispatch('media-deleted');
+        $this->post->refresh();
     }
 
     public function rules(): array
@@ -137,6 +144,7 @@ class Edit extends Component
     #[On('media-deleted')]
     public function render(): View
     {
+        $this->images = $this->post->getMedia();
         return view('livewire.post.edit');
     }
 }

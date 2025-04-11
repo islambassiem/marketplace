@@ -99,15 +99,14 @@
         </div>
         <div class="col-span-12">
             <div class="grid grid-cols-12 gap-2">
-                @foreach ($images as $media)
+                @foreach ($this->images as $media)
                     <div x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false" x-transition
+                        wire:key="{ $media->id }}"
                         class="col-span-12 sm:col-span-6 md:col-span-4 xl:col-span-3 relative group">
 
-                        <button data-modal-target="popup-modal-{{ $media->id }}"
-                            data-modal-toggle="popup-modal-{{ $media->id }}" x-show="open" type="button"
+                        <button type="button" x-show="open"
                             @click="$dispatch('open-delete-modal', { id: {{ $media->id }} })"
-                            data-modal-target="popup-modal-{{ $media->id }}"
-                            class="absolute top-0 right-0 rtl:left-0 z-20  gap-x-2">
+                            class="absolute top-0 right-0 rtl:left-0 z-20">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="size-8">
                                 <path fill="#afc4e1" d="M50,21H14v36c0,1.105,0.895,2,2,2h32c1.105,0,2-0.895,2-2V21z" />
                                 <path fill="#becde8" d="M39,59V21H14v36c0,1.104,0.895,2,2,2H39z" />
@@ -124,49 +123,6 @@
                             </svg>
                         </button>
 
-                        <div x-data="{ show: false }" x-show="show" x-cloak
-                            @open-delete-modal.window="if ($event.detail.id == {{ $media->id }}) show = true"
-                            @close-modal.window="show = false" x-transition.opacity @click.self="show = false"
-                            class="fixed top-0 right-0 left-0 z-50 flex  overflow-y-auto overflow-x-hidden justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full bg-black/50"
-                            style="display: none;">
-                            <div class="relative p-4 w-full max-w-md max-h-full mx-auto">
-                                <div class="relative bg-white rounded-lg shadow-sm dark:bg-gray-700">
-                                    <button type="button"
-                                        class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                                        @click="show = false">
-                                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                            fill="none" viewBox="0 0 14 14">
-                                            <path stroke="currentColor" stroke-linecap="round"
-                                                stroke-linejoin="round" stroke-width="2"
-                                                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                                        </svg>
-                                        <span class="sr-only">Close modal</span>
-                                    </button>
-                                    <div class="p-4 md:p-5 text-center">
-                                        <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200"
-                                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                            viewBox="0 0 20 20">
-                                            <path stroke="currentColor" stroke-linecap="round"
-                                                stroke-linejoin="round" stroke-width="2"
-                                                d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                                        </svg>
-                                        <h3 id="popup-modal-title-{{ $media->id }}"
-                                            class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
-                                            {{ __('Are you sure you want to delete this image?') }}
-                                        </h3>
-                                        <button type="submit" wire:click.prevent="delete({{ $media->id }})"
-                                            class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
-                                            {{ __("Yes, I'm sure") }}
-                                        </button>
-                                        <button type="button" @click="show = false"
-                                            class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
-                                            {{ __('Cancel') }}
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
                         <img src="{{ $media->getUrl() }}" alt="{{ $media->name }}"
                             class="object-cover w-[600px] h-[400px] rounded-lg shadow-xl group-hover:scale-105  transition duration-700 ease-out hover:opacity-25">
                     </div>
@@ -176,7 +132,7 @@
         @if ($post->getMedia()->count() < env('MAX_UPLOAD_NUMNER', 5))
             <div class="col-span-12">
                 <x-file-upload wire:model='photos' :postMediaCount="$post->getMedia()->count()" />
-                </div>
+            </div>
         @endif
         @error('photos')
             <div class="text-sm text-red-500 mb-2">{{ $message }}</div>
@@ -186,6 +142,36 @@
                 <flux:icon.bookmark-square />
                 {{ __('Save') }}
             </x-form.button>
+        </div>
+    </div>
+
+    <div x-data="{ show: false, mediaId: null }" x-show="show" x-cloak wire:ignore
+        @open-delete-modal.window="mediaId = $event.detail.id; show = true" @close-modal.window="show = false"
+        @media-deleted.window="show = false" @click.self="show = false"
+        class="fixed top-0 right-0 left-0 z-50 flex overflow-y-auto overflow-x-hidden justify-center items-center w-full h-screen bg-black/50">
+        <div class="relative p-4 w-full max-w-md bg-white rounded-lg shadow-md dark:bg-gray-700">
+            <button type="button"
+                class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 rounded-lg w-8 h-8"
+                @click="show = false">
+                ✕
+            </button>
+            <div class="p-4 text-center">
+                <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" fill="none" viewBox="0 0 20 20">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                </svg>
+                <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
+                    {{ __('Are you sure you want to delete this image?') }}
+                </h3>
+                <button type="button" @click="$wire.delete(mediaId)"
+                    class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5">
+                    {{ __("Yes, I'm sure") }}
+                </button>
+                <button type="button" @click="show = false"
+                    class="ml-3 py-2.5 px-5 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 hover:bg-gray-100">
+                    {{ __('Cancel') }}
+                </button>
+            </div>
         </div>
     </div>
 </form>

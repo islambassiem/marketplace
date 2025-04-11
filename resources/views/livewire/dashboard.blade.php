@@ -108,6 +108,7 @@
 
                                 <div
                                     x-data="{ show: false }" x-show="show"
+                                    id="popup-modal-{{ $post->id }}"
                                     x-cloak
                                     @open-delete-modal.window="if ($event.detail.id == {{ $post->id }}) show = true"
                                     @close-modal.window="show = false" x-transition.opacity
@@ -158,13 +159,13 @@
                         </tr>
                     @endforeach
                     <script>
-                        Livewire.on('postDeleted', (postId) => {
-                            window.dispatchEvent(new CustomEvent('close-modal', {
-                                detail: {
-                                    id: postId
-                                }
-                            }));
-                        });
+                        // Livewire.on('postDeleted', (postId) => {
+                        //     window.dispatchEvent(new CustomEvent('close-modal', {
+                        //         detail: {
+                        //             id: postId
+                        //         }
+                        //     }));
+                        // });
                     </script>
                 </tbody>
             </table>
