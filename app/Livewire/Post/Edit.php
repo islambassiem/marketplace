@@ -145,6 +145,7 @@ class Edit extends Component
     public function render(): View
     {
         $this->images = $this->post->getMedia();
+
         return view('livewire.post.edit');
     }
 }
