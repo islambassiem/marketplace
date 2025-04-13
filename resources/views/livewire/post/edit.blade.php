@@ -1,4 +1,4 @@
-<form method="post" wire:submit='save'>
+<form method="post" wire:submit.prevent='save' enctype="multipart/form-data">
     @csrf
     <div class="grid grid-cols-12 gap-4 border-2 border-dashed p-4 rounded-lg">
         <div class="col-span-12 md:col-span-6">
