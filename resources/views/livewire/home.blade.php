@@ -86,7 +86,7 @@
         </div>
         <div class="flex gap-3 overflow-x-auto py-3 my-3">
             @foreach ($this->categories as $category)
-                <div wire:click="category({{ $category->id }})"
+                <div wire:click="category({{ $category->id }})" wire:key='{{ $category->id }}'
                     class="flex flex-col justify-center items-center cursor-pointer p-3 border-2 rounded-3xl min-w-20 hover:bg-main-200 transform transition duration-300 hover:scale-105 dark:text-neutral-200">
                     <x-icons :type="$category->name_en" />
                     <span
@@ -97,7 +97,7 @@
         <div class="flex gap-3 py-3">
             @if ($subCategories[0] !== null)
                 @foreach ($subCategories as $subCategory)
-                    <a href="{{ $subCategory?->name_en }}" wire:navigate
+                    <a href="{{ $subCategory?->name_en }}" wire:navigate wire:key='{{ $subCategory?->id }}'
                         class="flex flex-col justify-center items-center cursor-pointer p-3 border-2 rounded-3xl min-w-20 hover:bg-main-200 transform transition duration-300 hover:scale-105 dark:text-neutral-200">
                         <x-icons :type="$subCategory?->name_en" />
                         <span
