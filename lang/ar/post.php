@@ -1,7 +1,7 @@
 <?php
 
-$maxNumber = env('MAX_UPLOAD_NUMNER', 5);
-$maxSize = env('MAX_UPLOAD_SIZE', 2048) / 1024;
+$maxNumber = config('app.configuration.MAX_UPLOAD_NUMNER', 5);
+$maxSize = config('app.configuration.MAX_UPLOAD_SIZE', 2048) / 1024;
 
 return [
     'The title is required.' => 'العنوان مطلوب.',

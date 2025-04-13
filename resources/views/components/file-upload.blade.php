@@ -1,8 +1,8 @@
 @props(['model', 'postMediaCount'])
 
 @php
-    $maxFiles = env('MAX_UPLOAD_NUMNER', 5);
-    $maxSize = env('MAX_UPLOAD_SIZE', 2048);
+    $maxFiles = config('app.configuration.MAX_UPLOAD_NUMNER', 5);
+    $maxSize = config('app.configuration.MAX_UPLOAD_SIZE', 2048);
 @endphp
 
 <div x-data="{

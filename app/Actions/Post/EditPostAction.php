@@ -20,7 +20,7 @@ class EditPostAction
         $post->save();
 
         if ($postData['photos'] !== null) {
-            $length = env('MAX_UPLOAD_NUMNER') - count($post->media) <= 0 ? 0 : env('MAX_UPLOAD_NUMNER') - count($post->media);
+            $length = config('app.configuration.MAX_UPLOAD_NUMNER') - count($post->media) <= 0 ? 0 : config('app.configuration.MAX_UPLOAD_NUMNER') - count($post->media);
 
             $photos = array_slice($postData['photos'], 0, $length);
             foreach ($photos as $image) {

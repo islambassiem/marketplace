@@ -52,11 +52,11 @@ class UpdatePostRequest extends FormRequest
             'city_id.exists' => __('post.'.'The selected city is invalid.'),
 
             'photos.array' => __('post.'.'The images must be in an array format.'),
-            'photos.max' => __('post.'.'You can upload up to'.env('MAX_UPLOAD_NUMNER', 5).'images only.'),
+            'photos.max' => __('post.'.'You can upload up to'.config('app.configuration.MAX_UPLOAD_NUMNER', 5).'images only.'),
 
             'photos.*.image' => __('post.'.'The uploaded file must be an image.'),
             'photos.*.mimes' => __('post.'.'Images must be of type: jpeg, png, jpg, gif, or svg.'),
-            'photos.*.max' => __('post.'.'Each image must not be larger than '.env('MAX_UPLOAD_SIZE', 2048) / 1024 .' MB.'),
+            'photos.*.max' => __('post.'.'Each image must not be larger than '.config('app.configuration.MAX_UPLOAD_SIZE', 2048) / 1024 .' MB.'),
         ];
     }
 }

@@ -123,4 +123,9 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    'configuration' => [
+        'MAX_UPLOAD_NUMNER' => env('MAX_UPLOAD_NUMNER', 5),
+        'MAX_UPLOAD_SIZE' => env('MAX_UPLOAD_SIZE', 5),
+    ],
+
 ];
