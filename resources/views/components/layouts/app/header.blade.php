@@ -20,6 +20,10 @@
                 wire:navigate>
                 {{ __('Dashboard') }}
             </flux:navbar.item>
+            <flux:navbar.item icon="microphone" :href="route('contact')" :current="request()->routeIs('contact*')"
+                wire:navigate>
+                {{ __('Contact us') }}
+            </flux:navbar.item>
             <flux:navbar.item icon="cog" :href="route('settings')" :current="request()->routeIs('settings*')"
                 wire:navigate>
                 {{ __('Settings') }}
@@ -58,9 +62,11 @@
                 <flux:menu.separator />
 
                 <flux:menu.radio.group>
-                    <flux:menu.item :href="route('settings.profile')" icon="cog" wire:navigate>{{ __('Settings') }}
-                    </flux:menu.item>
                     <flux:menu.item :href="route('home')" icon="home" wire:navigate>{{ __('Home') }}
+                    </flux:menu.item>
+                    <flux:menu.item :href="route('contact')" icon="microphone" wire:navigate>{{ __('Contact us') }}
+                    </flux:menu.item>
+                    <flux:menu.item :href="route('settings.profile')" icon="cog" wire:navigate>{{ __('Settings') }}
                     </flux:menu.item>
                 </flux:menu.radio.group>
 
@@ -90,6 +96,10 @@
                 <flux:navlist.item icon="layout-grid" :href="route('dashboard')"
                     :current="request()->routeIs('dashboard')" wire:navigate>
                     {{ __('Dashboard') }}
+                </flux:navlist.item>
+                <flux:navlist.item icon="microphone" :href="route('contact')"
+                    :current="request()->routeIs('contact')" wire:navigate>
+                    {{ __('Contact us') }}
                 </flux:navlist.item>
                 <flux:navlist.item icon="cog" :href="route('settings')" :current="request()->routeIs('settings*')"
                     wire:navigate>

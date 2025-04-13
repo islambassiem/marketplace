@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\Contact;
 use App\Livewire\Dashboard;
 use App\Livewire\Home;
 use App\Livewire\Post\Create;
@@ -25,8 +26,10 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/create', Create::class)->name('post.create');
     Route::get('post/{post}/edit', Edit::class)->name('post.edit');
+
 });
 
+Route::get('contact', Contact::class)->name('contact');
 require __DIR__.'/auth.php';
 
 Route::get('seed', function () {

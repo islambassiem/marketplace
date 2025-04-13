@@ -12,7 +12,7 @@
     $inputId = $id ?? Str::slug($label) . '-' . uniqid();
 @endphp
 
-<div>
+<div class="my-2">
     @if($label)
         <label for="{{ $inputId }}" class="block mb-2 text-sm font-regular text-gray-900 dark:text-white">{{ $label }}</label>
     @endif

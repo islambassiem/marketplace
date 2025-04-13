@@ -19,6 +19,9 @@
         <nav class="-mx-3 flex flex-1 justify-end items-center">
             @livewire('set-locale')
             <flux:button x-data x-on:click="$flux.dark = ! $flux.dark" icon="moon" variant="subtle" aria-label="Toggle dark mode" class="mx-2"/>
+            <a href="{{ route('contact') }}" wire:navigate>
+                <flux:icon icon="microphone" class="mx-3 dark:text-zinc-300" />
+            </a>
             @auth
                 <a href="{{ url('/dashboard') }}"
                     class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
@@ -49,10 +52,9 @@
                         <flux:menu.separator />
 
                         <flux:menu.radio.group>
-                            <flux:menu.item :href="route('settings.profile')" icon="cog" wire:navigate>
-                                {{ __('Settings') }}</flux:menu.item>
-                            <flux:menu.item :href="route('home')" icon="home" wire:navigate>{{ __('Home') }}
-                            </flux:menu.item>
+                            <flux:menu.item :href="route('home')" icon="home" wire:navigate>{{ __('Home') }}</flux:menu.item>
+                            <flux:menu.item :href="route('contact')" icon="microphone" wire:navigate>{{ __('Contact us') }}</flux:menu.item>
+                            <flux:menu.item :href="route('settings.profile')" icon="cog" wire:navigate>{{ __('Settings') }}</flux:menu.item>
                         </flux:menu.radio.group>
 
                         <flux:menu.separator />

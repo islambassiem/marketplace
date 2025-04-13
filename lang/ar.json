@@ -114,5 +114,20 @@
     "Ok": "حسناً",
     "Error": "حدث خطأ",
     "is too large. Max size is": "كبير جداً. الحد الأقصى هو",
-    "You can only upload up to": "يمكنك الرفع لغاية"
+    "You can only upload up to": "يمكنك الرفع لغاية",
+    "Contact us":  "تواصل معنا",
+    "To get in touch with us, please fill the form below. We're here to answer all of your questions and talk you through the benefits of":  "للتواصل معنا، يرجى ملء النموذج أدناه. نحن هنا للإجابة على جميع أسئلتك والتحدث معك حول  ما نقدمه في",
+    "Subject":  "الموضوع",
+    "Body":  "المحتوى",
+    "Send":  "ارسال",
+    "Select an option":  "اختر خيار",
+    "Type":  "النوع",
+    "Your name":  "اسمك",
+    "Your email":  "بريدك الالكتروني",
+    "Complaint":  "شكوى",
+    "Suggestion":  "اقتراح",
+    "Question":  "استفسار",
+    "Other" :  "اخرى",
+    "Your message has been sent successfully!":  "لقد تلقينا طلبك بنجاح"
+
 }
