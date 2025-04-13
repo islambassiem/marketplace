@@ -20,7 +20,7 @@
             @livewire('set-locale')
             <flux:button x-data x-on:click="$flux.dark = ! $flux.dark" icon="moon" variant="subtle" aria-label="Toggle dark mode" class="mx-2"/>
             <a href="{{ route('contact') }}" wire:navigate>
-                <flux:icon icon="microphone" class="mx-3 dark:text-zinc-300" />
+                <flux:icon icon="microphone" class="mx-3 text-zinc-800 dark:text-zinc-300" />
             </a>
             @auth
                 <a href="{{ url('/dashboard') }}"
