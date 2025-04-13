@@ -1,0 +1,49 @@
+{
+  "public/fonts/Alexandria/static/Alexandria-Black.ttf": {
+    "file": "assets/Alexandria-Black-DhDvFe3H.ttf",
+    "src": "public/fonts/Alexandria/static/Alexandria-Black.ttf"
+  },
+  "public/fonts/Alexandria/static/Alexandria-Bold.ttf": {
+    "file": "assets/Alexandria-Bold--ASAPYMP.ttf",
+    "src": "public/fonts/Alexandria/static/Alexandria-Bold.ttf"
+  },
+  "public/fonts/Alexandria/static/Alexandria-ExtraBold.ttf": {
+    "file": "assets/Alexandria-ExtraBold-CPthqJAV.ttf",
+    "src": "public/fonts/Alexandria/static/Alexandria-ExtraBold.ttf"
+  },
+  "public/fonts/Alexandria/static/Alexandria-ExtraLight.ttf": {
+    "file": "assets/Alexandria-ExtraLight-UIDFKJic.ttf",
+    "src": "public/fonts/Alexandria/static/Alexandria-ExtraLight.ttf"
+  },
+  "public/fonts/Alexandria/static/Alexandria-Light.ttf": {
+    "file": "assets/Alexandria-Light-acsJzjpE.ttf",
+    "src": "public/fonts/Alexandria/static/Alexandria-Light.ttf"
+  },
+  "public/fonts/Alexandria/static/Alexandria-Medium.ttf": {
+    "file": "assets/Alexandria-Medium-o8FfcbMa.ttf",
+    "src": "public/fonts/Alexandria/static/Alexandria-Medium.ttf"
+  },
+  "public/fonts/Alexandria/static/Alexandria-Regular.ttf": {
+    "file": "assets/Alexandria-Regular-Cm79cfdM.ttf",
+    "src": "public/fonts/Alexandria/static/Alexandria-Regular.ttf"
+  },
+  "public/fonts/Alexandria/static/Alexandria-SemiBold.ttf": {
+    "file": "assets/Alexandria-SemiBold-CeMtXHaZ.ttf",
+    "src": "public/fonts/Alexandria/static/Alexandria-SemiBold.ttf"
+  },
+  "public/fonts/Alexandria/static/Alexandria-Thin.ttf": {
+    "file": "assets/Alexandria-Thin-BnAZu9x6.ttf",
+    "src": "public/fonts/Alexandria/static/Alexandria-Thin.ttf"
+  },
+  "resources/css/app.css": {
+    "file": "assets/app-CU_F_n3-.css",
+    "src": "resources/css/app.css",
+    "isEntry": true
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-Crvmg1QP.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true
+  }
+}
