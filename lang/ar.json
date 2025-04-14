@@ -128,6 +128,15 @@
     "Suggestion":  "اقتراح",
     "Question":  "استفسار",
     "Other" :  "اخرى",
-    "Your message has been sent successfully!":  "لقد تلقينا طلبك بنجاح"
+    "Your message has been sent successfully!":  "لقد تلقينا طلبك بنجاح",
+
+
+    "Users": "مستخدمين",
+    "Users List": "قائمة المستخدمين",
+    "Search for user": "ابحث عن مستخدم",
+    "Is Admin": "مدير",
+    "Member since": "عضو منذ",
+    "The user privilege has been updated successfully.": "تم تحديث صلاحيات المستخدم بنجاح.",
+    "Ads Count": "عدد الاعلانات"
 
 }
