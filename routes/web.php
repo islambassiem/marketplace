@@ -31,6 +31,7 @@ Route::middleware(['auth'])->group(function () {
 
 Route::get('contact', Contact::class)->name('contact');
 require __DIR__.'/auth.php';
+require __DIR__.'/admin.php';
 
 Route::get('seed', function () {
     ini_set('max_execution_time', 0);
