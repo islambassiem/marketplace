@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
             CitySeeder::class,
             PostSeeder::class,
+            ContactSeeder::class,
         ]);
     }
 }

@@ -72,7 +72,7 @@
     "Showing": "عرض",
     "to": "الى",
     "of": "من",
-    "results": "نتايج",
+    "results": "نتائج",
     "Search": "بحث",
     "No matching records found": "لا توجد سجلات مطابقة",
     "Previous": "السابق",
@@ -137,6 +137,12 @@
     "Is Admin": "مدير",
     "Member since": "عضو منذ",
     "The user privilege has been updated successfully.": "تم تحديث صلاحيات المستخدم بنجاح.",
-    "Ads Count": "عدد الاعلانات"
+    "Ads Count": "عدد الاعلانات",
+
+    "Messages": "الرسائل",
+    "Messages List": "قائمة الرسائل",
+    "Messages Type": "نوع الرسائل",
+    "No messages found": "لا توجد رسائل",
+    "All": "الكل"
 
 }

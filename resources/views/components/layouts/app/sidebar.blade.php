@@ -72,6 +72,12 @@
                 </flux:navlist.group>
             </flux:navlist>
 
+            <flux:navlist variant="outline">
+                <flux:navlist.group :heading="__('')" class="grid">
+                    <flux:navlist.item icon="inbox-arrow-down" :href="route('admin.inbox')" :current="request()->routeIs('admin.inbox')" wire:navigate>{{ __('Messages') }}</flux:navlist.item>
+                </flux:navlist.group>
+            </flux:navlist>
+
             <flux:spacer />
         </flux:sidebar>
 

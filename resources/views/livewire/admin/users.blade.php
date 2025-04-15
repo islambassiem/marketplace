@@ -59,7 +59,7 @@
                         <li>
                             <div class="flex items-center p-2 rounded-sm hover:bg-gray-100 dark:hover:bg-gray-600">
                                 <input id="filter-radio-example-4" type="radio" value="" name="filter-radio"
-                                    @checked($limit == 50) wire:change='setLimit(20)'
+                                    @checked($limit == 50) wire:change='setLimit(50)'
                                     class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                 <label for="filter-radio-example-4"
                                     class="w-full ms-2 text-sm font-medium text-gray-900 rounded-sm dark:text-gray-300">50
