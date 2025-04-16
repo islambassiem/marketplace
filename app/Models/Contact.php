@@ -20,11 +20,18 @@ class Contact extends Model
         'body',
     ];
 
-    const TYPES = [
+    public const TYPES = [
         '1' => 'Complaint',
         '2' => 'Suggestion',
         '3' => 'Question',
         '4' => 'Other',
+    ];
+
+    public const STATUSES = [
+        '0' => 'Pending',
+        '1' => 'In Progress',
+        '2' => 'Completed',
+        '3' => 'Resolved',
     ];
 
     public function user(): BelongsTo

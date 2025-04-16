@@ -143,6 +143,21 @@
     "Messages List": "قائمة الرسائل",
     "Messages Type": "نوع الرسائل",
     "No messages found": "لا توجد رسائل",
-    "All": "الكل"
+    "All": "الكل",
+    "Actions": "الاجراءات",
+    "Mark as unread": "تحديد كغير مقروء",
+    "Mark as read": "تحديد كمقروء",
+    "Pending": "قيد الانتظار",
+    "In Progress": "قيد التنفيذ",
+    "Completed": "مكتمل",
+    "On Hold": "معلق",
+    "Cancelled": "ملغي",
+    "Resolved": "تم الحل",
+    "Details": "التفاصيل",
+    "Status": "الحالة",
+    "The status of the message has been updated to": "تم تحديث حالة الرسالة الى",
+    "Types": "الانواع",
+    "Unread": "غير مقروء",
+    "Read": "مقروء"
 
 }
