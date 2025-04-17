@@ -5,10 +5,10 @@
     @include('partials.head')
 </head>
 
-<body class="min-h-screen bg-white dark:bg-zinc-800 font-alexandria">
+<body class="min-h-screen bg-white dark:bg-zinc-800">
 
     <div
-        class="px-6 lg:px-8 h-[55px] flex items-center justify-end border-b border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900">
+        class="px-6 lg:px-8 h-[55px]  hidden lg:flex items-center justify-end border-b border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900">
         @livewire('set-locale')
         <flux:button x-data x-on:click="$flux.dark = ! $flux.dark" icon="moon" variant="subtle"
             aria-label="Toggle dark mode" />
@@ -35,6 +35,32 @@
                     </div>
                 </flux:menu.radio.group>
 
+                <flux:navlist variant="outline">
+                    <flux:navlist.group :heading="__('')" class="grid">
+                        <flux:navlist.item class="text-zinc-800! dark:text-zinc-200!" icon="users"
+                            :href="route('admin.users')" :current="request()->routeIs('admin.users')" wire:navigate>
+                            {{ __('Users') }}</flux:navlist.item>
+                    </flux:navlist.group>
+                </flux:navlist>
+
+                <flux:navlist variant="outline">
+                    <flux:navlist.group :heading="__('')" class="grid">
+                        <flux:navlist.item class="text-zinc-800! dark:text-zinc-200!" icon="inbox-arrow-down"
+                            :href="route('admin.inbox.index')" :current="request()->routeIs('admin.inbox*')"
+                            wire:navigate>
+                            {{ __('Messages') }}</flux:navlist.item>
+                    </flux:navlist.group>
+                </flux:navlist>
+
+                <flux:navlist variant="outline">
+                    <flux:navlist.group :heading="__('')" class="grid">
+                        <flux:navlist.item class="text-zinc-800! dark:text-zinc-200!" icon="layout-grid"
+                            :href="route('admin.dashboard')" :current="request()->routeIs('admin.dashboard')"
+                            wire:navigate>{{ __('Dashboard') }}
+                        </flux:navlist.item>
+                    </flux:navlist.group>
+                </flux:navlist>
+
                 <flux:menu.separator />
 
                 <form method="POST" action="{{ route('logout') }}" class="w-full">
@@ -46,8 +72,9 @@
             </flux:menu>
         </flux:dropdown>
     </div>
-    <flux:sidebar sticky
-        class="border-r rtl:border-l border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900 ">
+
+
+    <flux:sidebar sticky stashable class="border-e border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900">
         <flux:sidebar.toggle class="lg:hidden" icon="x-mark" />
 
         <a href="{{ route('dashboard') }}" class="me-5 flex items-center space-x-2 rtl:space-x-reverse" wire:navigate>
@@ -58,7 +85,8 @@
             <flux:navlist.group :heading="__('')" class="grid">
                 <flux:navlist.item class="text-zinc-800! dark:text-zinc-200!" icon="layout-grid"
                     :href="route('admin.dashboard')" :current="request()->routeIs('admin.dashboard')" wire:navigate>
-                    {{ __('Dashboard') }}</flux:navlist.item>
+                    {{ __('Dashboard') }}
+                </flux:navlist.item>
             </flux:navlist.group>
         </flux:navlist>
 
@@ -84,6 +112,10 @@
     <!-- Mobile User Menu -->
     <flux:header class="lg:hidden">
         <flux:sidebar.toggle class="lg:hidden" icon="bars-2" inset="left" />
+
+        @livewire('set-locale')
+        <flux:button x-data x-on:click="$flux.dark = ! $flux.dark" icon="moon" variant="subtle"
+            aria-label="Toggle dark mode" />
 
         <flux:spacer />
 
@@ -111,10 +143,31 @@
 
                 <flux:menu.separator />
 
-                <flux:menu.radio.group>
-                    <flux:menu.item :href="route('settings.profile')" icon="cog" wire:navigate>
-                        {{ __('Settings') }}</flux:menu.item>
-                </flux:menu.radio.group>
+                <flux:navlist variant="outline">
+                    <flux:navlist.group :heading="__('')" class="grid">
+                        <flux:navlist.item class="text-zinc-800! dark:text-zinc-200!" icon="users"
+                            :href="route('admin.users')" :current="request()->routeIs('admin.users')" wire:navigate>
+                            {{ __('Users') }}</flux:navlist.item>
+                    </flux:navlist.group>
+                </flux:navlist>
+
+                <flux:navlist variant="outline">
+                    <flux:navlist.group :heading="__('')" class="grid">
+                        <flux:navlist.item class="text-zinc-800! dark:text-zinc-200!" icon="inbox-arrow-down"
+                            :href="route('admin.inbox.index')" :current="request()->routeIs('admin.inbox*')"
+                            wire:navigate>
+                            {{ __('Messages') }}</flux:navlist.item>
+                    </flux:navlist.group>
+                </flux:navlist>
+
+                <flux:navlist variant="outline">
+                    <flux:navlist.group :heading="__('')" class="grid">
+                        <flux:navlist.item class="text-zinc-800! dark:text-zinc-200!" icon="layout-grid"
+                            :href="route('admin.dashboard')" :current="request()->routeIs('admin.dashboard')"
+                            wire:navigate>{{ __('Dashboard') }}
+                        </flux:navlist.item>
+                    </flux:navlist.group>
+                </flux:navlist>
 
                 <flux:menu.separator />
 
@@ -131,7 +184,6 @@
     {{ $slot }}
 
     @fluxScripts
-    <x-mary-toast />
 </body>
 
 </html>
