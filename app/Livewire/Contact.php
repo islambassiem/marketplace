@@ -4,10 +4,8 @@ namespace App\Livewire;
 
 use App\Actions\Contact\CreateContactAction;
 use App\Http\Requests\CreateContactRequest;
-use Livewire\Attributes\Layout;
 use Livewire\Component;
 
-#[Layout('components.layouts.home')]
 class Contact extends Component
 {
     public $name;

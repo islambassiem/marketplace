@@ -68,8 +68,8 @@ class Index extends Component
             ->when($this->filteredStatuses !== [], function ($query) {
                 $query->whereIn('status', $this->filteredStatuses);
             })
-            ->when($this->filteredRead !== null, function ($query) {
-                $query->where('is_read', $this->filteredRead);
+            ->when($this->filteredRead !== [], function ($query) {
+                $query->whereIn('is_read', $this->filteredRead);
             })
             ->orderBy('is_read')
             ->orderByDesc('created_at')

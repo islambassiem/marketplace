@@ -115,10 +115,7 @@
                         {{ __('Subject') }}
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        {{ __('Status') }}
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        {{ __('Type') }}
+                        {{ __('Created at') }}
                     </th>
                     <th scope="col" class="px-6 py-3">{{ __('Actions') }}</th>
                 </tr>
@@ -139,10 +136,7 @@
                             {{ $contact->subject }}
                         </td>
                         <td class="px-6 py-4">
-                            {{ __($statuses[$contact->status]) }}
-                        </td>
-                        <td class="px-6 py-4">
-                            {{ __($types[$contact->type]) }}
+                            {{ $contact->created_at->format('d M, Y') }}
                         </td>
                         <td class="px-6 py-4 flex items-center gap-2">
                             <div x-data="{ open: false }" class="relative">

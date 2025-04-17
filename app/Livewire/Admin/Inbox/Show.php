@@ -16,6 +16,8 @@ class Show extends Component
     public function monut(Contact $contact)
     {
         $this->contact = $contact;
+        $this->contact->is_read = 1;
+        $this->contact->save();
     }
 
     public function updateStatus($status)

@@ -27,9 +27,8 @@
             <div x-show="open" x-cloak
                 class="absolute z-10 w-48 bg-white rounded-lg shadow-sm dark:bg-gray-700 mt-2 p-2">
                 @foreach ($statuses as $key => $type)
-                    <li wire:key="{{ $key }}">
-                        <div
-                            wire:click='updateStatus("{{ $key }}")'
+                    <li wire:key="{{ $key }}" class="list-none">
+                        <div wire:click='updateStatus("{{ $key }}")'
                             class="flex items-center p-2 rounded-sm hover:bg-gray-100 dark:hover:bg-gray-600">
                             <div class="flex items-center">
                                 <input @checked($key === $contact->status) id="default-radio-{{ $key }}"

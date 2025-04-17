@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ app()->currentLocale() }}" dir="{{ app()->currentLocale() === 'ar' ? 'rtl' : 'ltr' }}"
-    x-data>
+<html lang="{{ app()->currentLocale() }}" dir="{{ app()->currentLocale() === 'ar' ? 'rtl' : 'ltr' }}" x-data>
 
 <head>
     @include('partials.head')
@@ -16,23 +15,24 @@
         </a>
 
         <flux:navbar class="-mb-px max-lg:hidden">
-            <flux:navbar.item icon="layout-grid" :href="route('dashboard')" :current="request()->routeIs('dashboard')"
-                wire:navigate>
+            <flux:navbar.item class="text-zinc-800! dark:text-zinc-200!" icon="layout-grid" :href="route('dashboard')"
+                :current="request()->routeIs('dashboard')" wire:navigate>
                 {{ __('Dashboard') }}
             </flux:navbar.item>
-            <flux:navbar.item icon="microphone" :href="route('contact')" :current="request()->routeIs('contact*')"
-                wire:navigate>
+            <flux:navbar.item class="text-zinc-800! dark:text-zinc-200!" icon="microphone" :href="route('contact')"
+                :current="request()->routeIs('contact*')" wire:navigate>
                 {{ __('Contact us') }}
             </flux:navbar.item>
-            <flux:navbar.item icon="cog" :href="route('settings')" :current="request()->routeIs('settings*')"
-                wire:navigate>
+            <flux:navbar.item class="text-zinc-800! dark:text-zinc-200!" icon="cog" :href="route('settings')"
+                :current="request()->routeIs('settings*')" wire:navigate>
                 {{ __('Settings') }}
             </flux:navbar.item>
         </flux:navbar>
 
         <flux:spacer />
 
-        <flux:button x-data x-on:click="$flux.dark = ! $flux.dark" icon="moon" variant="subtle" aria-label="Toggle dark mode" />
+        <flux:button x-data x-on:click="$flux.dark = ! $flux.dark" icon="moon" variant="subtle"
+            aria-label="Toggle dark mode" />
 
         @livewire('set-locale')
 
@@ -101,8 +101,8 @@
                     :current="request()->routeIs('contact')" wire:navigate>
                     {{ __('Contact us') }}
                 </flux:navlist.item>
-                <flux:navlist.item icon="cog" :href="route('settings')" :current="request()->routeIs('settings*')"
-                    wire:navigate>
+                <flux:navlist.item icon="cog" :href="route('settings')"
+                    :current="request()->routeIs('settings*')" wire:navigate>
                     {{ __('Settings') }}
                 </flux:navlist.item>
             </flux:navlist.group>
