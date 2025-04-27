@@ -159,6 +159,13 @@
     "Types": "الانواع",
     "Unread": "غير مقروء",
     "Read": "مقروء",
-    "Created at": "تاريخ الانشاء"
-
+    "Created at": "تاريخ الانشاء",
+    "Select date end": "اختر تاريخ النهاية",
+    "Select date start": "اختر تاريخ البداية",
+    "Ads": "اعلانات",
+    "Images": "صور",
+    "Submit": "ارسال",
+    "Complaints": "شكاوى",
+    "Questions": "استفسارات",
+    "Suggestions": "اقتراحات"
 }

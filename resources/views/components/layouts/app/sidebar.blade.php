@@ -5,7 +5,7 @@
     @include('partials.head')
 </head>
 
-<body class="min-h-screen bg-white dark:bg-zinc-800">
+<body class="min-h-screen bg-white dark:bg-zinc-800 font-alexandria">
 
     <div
         class="px-6 lg:px-8 h-[55px]  hidden lg:flex items-center justify-end border-b border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900">
