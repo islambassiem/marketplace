@@ -8,9 +8,12 @@ use App\Models\Post;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
+use Mary\Traits\Toast;
 
 class Home extends Component
 {
+    use Toast;
+
     public $limit = 6;
 
     public function load()
@@ -82,6 +85,13 @@ class Home extends Component
     {
         $subCategories = Category::where('parent_id', $category)->get();
         $this->subCategories = $subCategories;
+    }
+
+    public function bookmark($id)
+    {
+        auth()->user()->favoritePosts()->syncWithoutDetaching([$id]);
+
+        $this->success(__('The ad has been added to your favorites successfully'));
     }
 
     #[Computed()]

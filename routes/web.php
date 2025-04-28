@@ -2,6 +2,7 @@
 
 use App\Livewire\Contact;
 use App\Livewire\Dashboard;
+use App\Livewire\Favorite\Index as Favorite;
 use App\Livewire\Home;
 use App\Livewire\Post\Create;
 use App\Livewire\Post\Edit;
@@ -26,6 +27,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/create', Create::class)->name('post.create');
     Route::get('post/{post}/edit', Edit::class)->name('post.edit');
+
+    Route::get('favorites', Favorite::class)->name('favorites.index');
 
 });
 

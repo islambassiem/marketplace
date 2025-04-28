@@ -1,9 +1,9 @@
 <div class="flex w-full flex-1 flex-col gap-4 rounded-xl">
-    @if(session('success'))
+    @if (session('success'))
         <div class="flex items-center p-4 my-4 text-sm text-green-800 border border-green-300 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400 dark:border-green-800"
             role="alert">
-            <svg class="shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                viewBox="0 0 20 20">
+            <svg class="shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor" viewBox="0 0 20 20">
                 <path
                     d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
             </svg>
@@ -107,9 +107,16 @@
             @endif
         </div>
     </form>
-    <div class="grid auto-rows-min gap-4 md:grid-cols-3 mx-auto">
+    <div class="grid auto-rows-min gap-4 md:grid-cols-3 mx-auto ">
         @foreach ($posts as $post)
-            <div>
+            <div class="relative text-zinc-800 dark:text-zinc-300">
+                @auth
+                    <button
+                        wire:click='bookmark({{ $post->id }})'
+                        class="absolute font-medium text-red-200 cursor-pointer top-2 right-2 left-auto rtl:right-auto rtl:left-2 hover:text-red-800 hover:bg-zinc-200 rounded-3xl p-1">
+                        <flux:icon.bookmark-square />
+                    </button>
+                @endauth
                 <x-post :post="$post" wire:key="{{ $post->id }}" />
             </div>
         @endforeach

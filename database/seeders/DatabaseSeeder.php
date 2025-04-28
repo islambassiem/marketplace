@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
             CitySeeder::class,
             PostSeeder::class,
             ContactSeeder::class,
+            FavotiteUserSeeder::class,
         ]);
     }
 }
