@@ -5,9 +5,12 @@ namespace App\Livewire\Favorite;
 use App\Models\FavotiteUser;
 use Livewire\Attributes\Computed;
 use Livewire\Component;
+use Mary\Traits\Toast;
 
 class Index extends Component
 {
+    use Toast;
+
     #[Computed()]
     public function posts()
     {
@@ -24,6 +27,8 @@ class Index extends Component
             abort(403, 'Unauthorized action.');
         }
         $favorite->delete();
+        $this->dispatch('postDeleted', $id);
+        $this->success(__('The ad has been deleted successfully'));
     }
 
     public function render()

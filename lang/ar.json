@@ -169,5 +169,7 @@
     "Questions": "استفسارات",
     "Suggestions": "اقتراحات",
     "Favotites": "المفضلة",
-    "The ad has been added to your favorites successfully": "تم اضافة الاعلان الى المفضلة بنجاح"
+    "The ad has been added to your favorites successfully": "تم اضافة الاعلان الى المفضلة بنجاح",
+    "Are you sure you want to delete this ad from favorites?": "هل انت متاكد من حذف هذا الاعلان من المفضلة؟",
+    "No favorites yet": "لا توجد مفضلة حتى الان"
 }
