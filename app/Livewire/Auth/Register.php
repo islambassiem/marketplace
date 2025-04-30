@@ -40,4 +40,10 @@ class Register extends Component
 
         $this->redirect(route('dashboard', absolute: false), navigate: true);
     }
+
+    public function render()
+    {
+        return view('livewire.auth.forgot-password')
+            ->title(__('Sign up'));
+    }
 }
