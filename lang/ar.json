@@ -173,5 +173,9 @@
     "Are you sure you want to delete this ad from favorites?": "هل انت متاكد من حذف هذا الاعلان من المفضلة؟",
     "No favorites yet": "لا توجد مفضلة حتى الان",
     "write your message here": "اكتب رسالتك هنا",
-    "Choose a conversation to start chatting": "اختر محادثة لبدء الدردشة"
+    "Choose a conversation to start chatting": "اختر محادثة لبدء الدردشة",
+    "Delete conversation": "حذف المحادثة",
+    "Chat": "دردشة",
+    "Admin Dashboard": "لوحة تحكم المدير",
+    "Favorite Ads": "الاعلانات المفضلة"
 }

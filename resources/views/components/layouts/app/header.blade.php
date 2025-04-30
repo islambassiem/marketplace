@@ -23,6 +23,10 @@
                 :current="request()->routeIs('favorites.*')" wire:navigate>
                 {{ __('Favotites') }}
             </flux:navbar.item>
+            <flux:navbar.item class="text-zinc-800! dark:text-zinc-200!" icon="chat-bubble-left-right" :href="route('chat.index')"
+                :current="request()->routeIs('chat*')" wire:navigate>
+                {{ __('Messages') }}
+            </flux:navbar.item>
             <flux:navbar.item class="text-zinc-800! dark:text-zinc-200!" icon="microphone" :href="route('contact')"
                 :current="request()->routeIs('contact*')" wire:navigate>
                 {{ __('Contact us') }}
@@ -69,6 +73,8 @@
                     <flux:menu.item :href="route('home')" icon="home" wire:navigate>{{ __('Home') }}
                     </flux:menu.item>
                     <flux:menu.item :href="route('favorites.index')" icon="star" wire:navigate>{{ __('Favotites') }}
+                    </flux:menu.item>
+                    <flux:menu.item :href="route('chat.index')" icon="chat-bubble-left-right" wire:navigate>{{ __('Messages') }}
                     </flux:menu.item>
                     <flux:menu.item :href="route('contact')" icon="microphone" wire:navigate>{{ __('Contact us') }}
                     </flux:menu.item>

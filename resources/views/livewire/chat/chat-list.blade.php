@@ -124,14 +124,16 @@
 
                 @foreach ($conversations as $key => $conversation)
                     <li id="conversation-{{ $conversation->id }}" wire:key="{{ $conversation->id }}"
-                        class="py-3 hover:bg-gray-50 rounded-2xl dark:hover:bg-gray-700/70 transition-colors duration-150 flex gap-4 relative w-full cursor-pointer px-2 {{ $conversation->id == $selectedConversation?->id ? 'bg-gray-200 dark:bg-gray-600' : '' }}">
+                        class="py-3 hover:bg-gray-50 rounded-2xl dark:hover:bg-gray-700/70 transition-colors duration-150 flex gap-4 relative w-full cursor-pointer px-2 {{ $conversation->id == $selectedConversation?->id ? 'bg-gray-50 dark:bg-gray-600' : '' }}">
                         <a href="#" class="shrink-0">
-                                <div class="relative inline-flex items-center justify-center w-10 h-10 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
-                                    <span class="font-medium text-gray-600 dark:text-gray-300">{{ $conversation->getReceiver()->initials() }}</span>
-                                </div>
+                            <div
+                                class="relative inline-flex items-center justify-center w-10 h-10 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
+                                <span
+                                    class="font-medium text-gray-600 dark:text-gray-300">{{ $conversation->getReceiver()->initials() }}</span>
+                            </div>
                         </a>
 
-                        <aside class="grid grid-cols-12 w-full">
+                        <aside class="grid grid-cols-12 w-full ">
 
                             <a href="{{ route('chat', $conversation->id) }}"
                                 class="col-span-11 border-b pb-2 border-gray-200 relative overflow-hidden truncate leading-5 w-full flex-nowrap p-1">
@@ -152,7 +154,7 @@
                                 {{-- Message body --}}
 
 
-                                <div class="flex gap-x-2 items-center">
+                                <div class="flex gap-x-2 items-center ">
 
                                     @if ($conversation->messages?->last()?->sender_id == auth()->id())
                                         @if ($conversation->isLastMessageReadByUser())
@@ -178,17 +180,14 @@
                                         @endif
                                     @endif
 
-
-
-
-                                    <p class="grow truncate text-sm font-[100]">
+                                    <p class="grow truncate text-sm text-zinc-700 dark:text-zinc-200">
                                         {{ $conversation->messages?->last()?->body ?? ' ' }}
                                     </p>
 
                                     {{-- unread count --}}
                                     @if ($conversation->unreadMessagesCount() > 0)
                                         <span
-                                            class="font-bold p-px px-2 text-xs shrink-0 rounded-full bg-blue-500 text-white">
+                                            class="font-bold p-px px-2 text-xs shrink-0 rounded-full bg-blue-500 text-zinc-800 dark:text-zinc-200">
                                             {{ $conversation->unreadMessagesCount() }}
                                         </span>
                                     @endif
@@ -218,7 +217,7 @@
                                     <x-slot name="content">
 
                                         <div class="w-full p-1">
-                                             {{-- <button
+                                            {{-- <button
                                                 class="items-center gap-3 flex w-full px-4 py-2 text-left text-sm leading-5 text-gray-500 hover:bg-gray-100 transition-all duration-150 ease-in-out focus:outline-none focus:bg-gray-100">
                                                 <span>
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16"
@@ -243,7 +242,7 @@
                                                     </svg>
                                                 </span>
 
-                                                {{ __('Delete') }}
+                                                {{ __('Delete conversation') }}
 
                                             </button>
 

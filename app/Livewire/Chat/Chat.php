@@ -27,6 +27,7 @@ class Chat extends Component
     #[Layout('components.layouts.app')]
     public function render()
     {
-        return view('livewire.chat.chat');
+        return view('livewire.chat.chat')
+            ->title(__('Chat'));
     }
 }

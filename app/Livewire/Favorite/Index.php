@@ -35,6 +35,7 @@ class Index extends Component
     {
         return view('livewire.favorite.index', [
             'posts' => $this->posts,
-        ]);
+        ])
+            ->title(__('Favorite Ads'));
     }
 }

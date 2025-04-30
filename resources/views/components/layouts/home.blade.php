@@ -41,7 +41,7 @@
                                         </span>
                                     </span>
 
-                                    <div class="grid flex-1 text-left text-sm leading-tight">
+                                    <div class="grid flex-1 text-left text-sm leading-tight text-zinc-800 dark:text-zinc-200">
                                         <span class="truncate font-semibold">{{ auth()->user()->name }}</span>
                                         <span class="truncate text-xs">{{ auth()->user()->email }}</span>
                                     </div>
@@ -53,6 +53,8 @@
 
                         <flux:menu.radio.group>
                             <flux:menu.item :href="route('home')" icon="home" wire:navigate>{{ __('Home') }}</flux:menu.item>
+                            <flux:menu.item :href="route('favorites.index')" icon="star" wire:navigate>{{ __('Favotites') }}</flux:menu.item>
+                            <flux:menu.item :href="route('chat.index')" icon="chat-bubble-left-right" wire:navigate>{{ __('Messages') }}</flux:menu.item>
                             <flux:menu.item :href="route('contact')" icon="microphone" wire:navigate>{{ __('Contact us') }}</flux:menu.item>
                             <flux:menu.item :href="route('settings.profile')" icon="cog" wire:navigate>{{ __('Settings') }}</flux:menu.item>
                         </flux:menu.radio.group>

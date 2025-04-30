@@ -76,6 +76,7 @@ class Dashboard extends Component
     {
         return view('livewire.dashboard', [
             'posts' => $this->posts,
-        ]);
+        ])
+            ->title(__('Dashboard'));
     }
 }

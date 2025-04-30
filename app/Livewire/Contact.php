@@ -40,6 +40,7 @@ class Contact extends Component
     {
         return view('livewire.contact', [
             'data' => \App\Models\Contact::TYPES,
-        ]);
+        ])
+            ->title(__('Contact us'));
     }
 }

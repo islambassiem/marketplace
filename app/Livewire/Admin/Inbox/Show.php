@@ -34,6 +34,7 @@ class Show extends Component
     {
         return view('livewire.admin.inbox.show', [
             'statuses' => Contact::STATUSES,
-        ]);
+        ])
+            ->title(__('Messages'));
     }
 }

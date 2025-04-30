@@ -84,7 +84,8 @@
 
 
 
-                    <p class="whitespace-normal truncate text-sm md:text-base tracking-wide lg:tracking-normal">
+                    <p class="whitespace-normal truncate text-sm md:text-base tracking-wide lg:tracking-normal text-zinc-800 dark:text-gray-200">
+                        {{-- show message body --}}
                         {{ $message->body }}
                     </p>
                     <div class="ml-auto flex gap-2">
@@ -99,7 +100,7 @@
                         @if ($message->sender_id === auth()->id())
                             <div x-data="{ markAsRead: @json($message->isRead()) }">
                                 {{-- double ticks --}}
-                                <span x-cloak x-show="markAsRead" @class('text-gray-200')>
+                                <span x-cloak x-show="markAsRead" @class(['text-gray-200'])>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                         fill="currentColor" class="bi bi-check2-all" viewBox="0 0 16 16">
                                         <path
@@ -108,7 +109,7 @@
                                     </svg>
                                 </span>
                                 {{-- single ticks --}}
-                                <span x-show="!markAsRead" @class('text-gray-200')>
+                                <span x-show="!markAsRead" @class(['text-gray-200'])>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                         fill="currentColor" class="bi bi-check2" viewBox="0 0 16 16">
                                         <path
@@ -139,7 +140,7 @@
             <div class="grid grid-cols-12 gap-2">
                 <input x-model="body" type="text" autocomplete="off" autofocus placeholder="{{ __('write your message here') }}"
                     maxlength="1700"
-                    class="col-span-10 md:col-span-11 bg-gray-200/50 dark:bg-gray-800 border-0 outline-0 focus:border-0 focus:ring-0 hover:ring-0 rounded-lg  focus:outline-none dark:text-neutral-300">
+                    class="col-span-10 text-zinc-800 dark:text-gray-200 md:col-span-11 bg-gray-200/50 dark:bg-gray-800 border-0 outline-0 focus:border-0 focus:ring-0 hover:ring-0 rounded-lg  focus:outline-none ">
                 <button x-bind:disabled="!body" class="col-span-2 md:col-span-1 border-2 border-gray-800 dark:border-gray-100 shadow-lg bg-indigo-500 hover:bg-indigo-300 hover:text-gray-100 text-neutral-300 dark:text-neutral-300 rounded-2xl" type='submit'>{{ __('Send') }}</button>
             </div>
 

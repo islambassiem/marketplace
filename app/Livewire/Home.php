@@ -49,9 +49,15 @@ class Home extends Component
             $activeCategory = Category::where('slug', $request)->first();
         }
 
+        if (is_null($activeCategory)) {
+            $this->title = config('app.name');
+        } else {
+            $this->title = app()->currentLocale() == 'ar' ? $activeCategory?->name_ar : ucfirst($activeCategory?->name_en);
+        }
+
         $this->slug = $slug;
         $this->subCategories[] = $activeCategory;
-        $this->title = app()->currentLocale() == 'ar' ? $activeCategory?->name_ar : ucfirst($activeCategory?->name_en);
+
     }
 
     public function query()

@@ -82,6 +82,7 @@ class Index extends Component
         return view('livewire.admin.inbox.index', [
             'types' => Contact::TYPES,
             'statuses' => Contact::STATUSES,
-        ]);
+        ])
+            ->title(__('Messages'));
     }
 }
