@@ -1,5 +1,7 @@
 <?php
 
+use App\Livewire\Chat\Chat;
+use App\Livewire\Chat\Index as ChatIndex;
 use App\Livewire\Contact;
 use App\Livewire\Dashboard;
 use App\Livewire\Favorite\Index as Favorite;
@@ -30,6 +32,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('favorites', Favorite::class)->name('favorites.index');
 
+    Route::get('chat', ChatIndex::class)->name('chat.index');
+    Route::get('chat/{query}', Chat::class)->name('chat');
 });
 
 Route::get('contact', Contact::class)->name('contact');
