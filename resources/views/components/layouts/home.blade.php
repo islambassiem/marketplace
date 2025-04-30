@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ app()->currentLocale() }}" dir="{{ app()->currentLocale() === 'ar' ? 'rtl' : 'ltr' }}"
-    class="dark">
+<html lang="{{ app()->currentLocale() }}" dir="{{ app()->currentLocale() === 'ar' ? 'rtl' : 'ltr' }}" class="dark">
 
 <head>
     @include('partials.head')
@@ -18,7 +17,8 @@
 
         <nav class="-mx-3 flex flex-1 justify-end items-center">
             @livewire('set-locale')
-            <flux:button x-data x-on:click="$flux.dark = ! $flux.dark" icon="moon" variant="subtle" aria-label="Toggle dark mode" class="mx-2"/>
+            <flux:button x-data x-on:click="$flux.dark = ! $flux.dark" icon="moon" variant="subtle"
+                aria-label="Toggle dark mode" class="mx-2" />
             <a href="{{ route('contact') }}" wire:navigate>
                 <flux:icon icon="microphone" class="mx-3 text-zinc-800 dark:text-zinc-300" />
             </a>
@@ -28,20 +28,26 @@
                     {{ __('Dashboard') }}
                 </a>
                 <flux:dropdown position="top" align="end">
-                    <flux:profile class="cursor-pointer" :initials="auth()->user()->initials()" />
+                    @auth
+                        <flux:profile class="cursor-pointer" :initials="auth()->user()-> initials()" />
+                    @endauth
 
                     <flux:menu>
                         <flux:menu.radio.group>
                             <div class="p-0 text-sm font-normal">
                                 <div class="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
                                     <span class="relative flex h-8 w-8 shrink-0 overflow-hidden rounded-lg">
-                                        <span
-                                            class="flex h-full w-full items-center justify-center rounded-lg bg-neutral-200 text-black dark:bg-neutral-700 dark:text-white">
-                                            {{ auth()->user()->initials() }}
-                                        </span>
+                                        @auth
+                                            <span
+                                                class="flex h-full w-full items-center justify-center rounded-lg bg-neutral-200 text-black dark:bg-neutral-700 dark:text-white">
+                                                {{ auth()->user()->initials() }}
+                                            </span>
+
+                                        @endauth
                                     </span>
 
-                                    <div class="grid flex-1 text-left text-sm leading-tight text-zinc-800 dark:text-zinc-200">
+                                    <div
+                                        class="grid flex-1 text-left text-sm leading-tight text-zinc-800 dark:text-zinc-200">
                                         <span class="truncate font-semibold">{{ auth()->user()->name }}</span>
                                         <span class="truncate text-xs">{{ auth()->user()->email }}</span>
                                     </div>
@@ -52,11 +58,16 @@
                         <flux:menu.separator />
 
                         <flux:menu.radio.group>
-                            <flux:menu.item :href="route('home')" icon="home" wire:navigate>{{ __('Home') }}</flux:menu.item>
-                            <flux:menu.item :href="route('favorites.index')" icon="star" wire:navigate>{{ __('Favotites') }}</flux:menu.item>
-                            <flux:menu.item :href="route('chat.index')" icon="chat-bubble-left-right" wire:navigate>{{ __('Messages') }}</flux:menu.item>
-                            <flux:menu.item :href="route('contact')" icon="microphone" wire:navigate>{{ __('Contact us') }}</flux:menu.item>
-                            <flux:menu.item :href="route('settings.profile')" icon="cog" wire:navigate>{{ __('Settings') }}</flux:menu.item>
+                            <flux:menu.item :href="route('home')" icon="home" wire:navigate>{{ __('Home') }}
+                            </flux:menu.item>
+                            <flux:menu.item :href="route('favorites.index')" icon="star" wire:navigate>
+                                {{ __('Favotites') }}</flux:menu.item>
+                            <flux:menu.item :href="route('chat.index')" icon="chat-bubble-left-right" wire:navigate>
+                                {{ __('Messages') }}</flux:menu.item>
+                            <flux:menu.item :href="route('contact')" icon="microphone" wire:navigate>{{ __('Contact us') }}
+                            </flux:menu.item>
+                            <flux:menu.item :href="route('settings.profile')" icon="cog" wire:navigate>
+                                {{ __('Settings') }}</flux:menu.item>
                         </flux:menu.radio.group>
 
                         <flux:menu.separator />

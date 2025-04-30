@@ -32,11 +32,12 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('favorites', Favorite::class)->name('favorites.index');
 
+    Route::get('contact', Contact::class)->name('contact');
+
     Route::get('chat', ChatIndex::class)->name('chat.index');
     Route::get('chat/{query}', Chat::class)->name('chat');
 });
 
-Route::get('contact', Contact::class)->name('contact');
 require __DIR__.'/auth.php';
 require __DIR__.'/admin.php';
 
