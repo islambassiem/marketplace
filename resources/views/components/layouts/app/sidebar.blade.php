@@ -10,6 +10,7 @@
     <div
         class="px-6 lg:px-8 h-[55px]  hidden lg:flex items-center justify-end border-b border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900">
         @livewire('set-locale')
+        <x-mary-toast />
         <flux:button x-data x-on:click="$flux.dark = ! $flux.dark" icon="moon" variant="subtle"
             aria-label="Toggle dark mode" />
         <!-- Desktop User Menu -->

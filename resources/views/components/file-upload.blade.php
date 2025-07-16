@@ -50,6 +50,7 @@
         <p>{{ __('Drag & drop files here or click to upload') }}</p>
         <p class="text-sm text-gray-400 mt-1">{{ __('Max') }} {{ $maxFiles - $postMediaCount }} {{ __('files') }}. {{ __('Max size') }} {{ $maxSize / 1024 }}MB
             {{ __('each') }}.</p>
+        <p class="text-sm text-gray-400 mt-1">{{ __('Supported formats') }}: jpeg, png, jpg, gif, svg</p>
     </button>
 
     <template x-for="(file, index) in files" :key="index">

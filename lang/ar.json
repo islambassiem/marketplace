@@ -99,17 +99,20 @@
     "The ad has been updated successfully": "تم تعديل الاعلان بنجاح",
     "The ad has been refreshed successfully": "تم تحديث الاعلان بنجاح",
     "The ad has been deleted successfully": "تم حذف الاعلان بنجاح",
+    "The user has been deleted successfully": "تم حذف المستخدم بنجاح",
     "The image has been deleted successfully": "تم حذف الصورة بنجاح",
 
     "Ad has been created successfully": "تم إنشاء الاعلان بنجاح",
     "This is the only image; you cannot deleted it": "هذه هي الصورة الوحيدة; لا يمكنك حذفها",
     "Drag & drop files here or click to upload": "اسحب الملفات هنا او انقر لتحميلها",
+    "Supported formats": "صيغ الملفات المدعومة",
     "Max size": "حجم الملف",
     "each": "لكل ملف",
     "Max": "الحد الاقصى",
     "files": "ملفات",
     "Are you sure you want to delete this post?": "هل انت متاكد من حذف هذا الاعلان؟",
     "Are you sure you want to delete this image?": "هل انت متاكد من حذف هذه الصورة",
+    "Are you sure you want to delete this user?": "هل انت متاكد من حذف هذا المستخدم",
     "Yes, I'm sure": "هل انت متاكد؟",
     "Ok": "حسناً",
     "Error": "حدث خطأ",
@@ -177,5 +180,6 @@
     "Delete conversation": "حذف المحادثة",
     "Chat": "دردشة",
     "Admin Dashboard": "لوحة تحكم المدير",
-    "Favorite Ads": "الاعلانات المفضلة"
+    "Favorite Ads": "الاعلانات المفضلة",
+    "Delete": "حذف"
 }

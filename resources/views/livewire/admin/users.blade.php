@@ -98,15 +98,15 @@
                     <th scope="col" class="px-6 py-3">
                         {{ __('Ads Count') }}
                     </th>
-                    <th scope="col" class="px-6 py-3">
+                    {{-- <th scope="col" class="px-6 py-3">
                         {{ __('Is Admin') }}
-                    </th>
+                    </th> --}}
                     <th scope="col" class="px-6 py-3">
                         {{ __('Member since') }}
                     </th>
-                    {{-- <th scope="col" class="px-6 py-3">
-                        Action
-                    </th> --}}
+                    <th scope="col" class="px-6 py-3">
+                        {{ __('Actions') }}
+                    </th>
                 </tr>
             </thead>
             <tbody>
@@ -123,7 +123,7 @@
                         <td class="px-6 py-4">
                             {{ $user->posts_count }}
                         </td>
-                        <td class="px-6 py-4">
+                        {{-- <td class="px-6 py-4">
                             <div class="flex items-center mb-4" x-data>
                                 <input id="default-checkbox" type="checkbox" @checked($user->is_admin)
                                     @change="$wire.toggleAdmin({{ $user }})"
@@ -131,20 +131,93 @@
                                 <label for="default-checkbox"
                                     class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"></label>
                             </div>
-                        </td>
+                        </td> --}}
                         <td class="px-6 py-4">
                             {{ $user->created_at->format('M d, Y') }}
                         </td>
-                        {{-- <td class="px-6 py-4">
-                        <a href="#"
-                            class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                    </td> --}}
+                        <td class="px-6 py-4 flex items-center gap-2">
+                            <div x-data="{ open: false }" x-cloak class="relative">
+                                <button x-on:click="open = !open"
+                                    class="inline-flex items-center p-2 text-sm text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+                                    type="button">
+                                    <span class="sr-only">Open dropdown</span>
+                                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                        fill="currentColor" viewBox="0 0 4 15">
+                                        <path
+                                            d="M3.5 1.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm0 6.041a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm0 5.959a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z" />
+                                    </svg>
+                                </button>
+                                <ul x-show="open" x-on:click.away="open = false" x-on:click="open = false"
+                                    class="space-y-4 absolute z-50 w-56 p-3 rounded-lg shadow-sm dark:bg-gray-700 top-8 right-0 rtl:left-0 rtl:right-auto mt-2 bg-white">
+                                    <li x-data wire:click="toggleAdmin({{ $user->id }})"
+                                        class="flex items-center gap-2 text-blue-600 dark:text-blue-500 cursor-pointer ms-4">
+                                        <div class="flex items-center mb-4">
+                                            <input id="isAdmin" type="checkbox" @checked($user->is_admin)
+                                                @change="$wire.toggleAdmin({{ $user }})"
+                                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                            <label for="isAdmin"
+                                                class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{ __('Is Admin') }}</label>
+                                        </div>
+                                    </li>
+                                    <li @click="$dispatch('open-delete-modal', { id: {{ $user->id }} })"
+                                        class="flex items-center gap-2 text-blue-600 dark:text-blue-500 cursor-pointer ms-3">
+                                        <button data-modal-target="popup-modal-{{ $user->id }}"
+                                            data-modal-toggle="popup-modal-{{ $user->id }}"
+                                            class="font-medium text-red-600 cursor-pointer flex gap-3" type="button">
+                                            <flux:icon.trash />
+                                            {{ __('Delete') }}
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
         <div class="mt-3">
             {{ $this->users->links() }}
+        </div>
+    </div>
+
+
+    <div x-data="{ show: false, userID: null }" x-show="show" x-cloak wire:ignore
+        @open-delete-modal.window="userID = $event.detail.id; show = true"
+        x-on:user-deleted.window="show = false"
+        @click.self="show = false" x-transition.opacity
+        class="fixed top-0 right-0 left-0 z-50 flex overflow-y-auto overflow-x-hidden justify-center items-center w-full h-screen bg-black/50">
+        <div class="relative p-4 w-full max-w-md bg-white rounded-lg shadow dark:bg-gray-700">
+            <button type="button"
+                class="absolute top-3 end-2.5 text-gray-400 hover:text-gray-900 hover:bg-gray-200 rounded-lg text-sm w-8 h-8 inline-flex justify-center items-center"
+                @click="show = false">
+                <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                </svg>
+                <span class="sr-only">Close modal</span>
+            </button>
+
+            <div class="p-4 text-center">
+                <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200"
+                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                </svg>
+                <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
+                    {{ __('Are you sure you want to delete this user?') }}
+                </h3>
+
+                <form wire:submit.prevent="delete(userID)">
+                    <button type="submit"
+                        class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5">
+                        {{ __("Yes, I'm sure") }}
+                    </button>
+                    <button type="button" @click="show = false"
+                        class="ml-3 py-2.5 px-5 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:text-white">
+                        {{ __('Cancel') }}
+                    </button>
+                </form>
+            </div>
         </div>
     </div>
 

@@ -38,8 +38,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('chat/{query}', Chat::class)->name('chat');
 });
 
-require __DIR__.'/auth.php';
-require __DIR__.'/admin.php';
+require __DIR__ . '/auth.php';
+require __DIR__ . '/admin.php';
 
 Route::get('seed', function () {
     ini_set('max_execution_time', 0);
@@ -49,11 +49,13 @@ Route::get('seed', function () {
     foreach ($posts as $post) {
         $count = mt_rand(5, 10);
         for ($i = 0; $i <= $count; $i++) {
-            $post->addMedia($path.$files->random())
+            $post->addMedia($path . $files->random())
                 ->preservingOriginal()
                 ->toMediaCollection();
         }
     }
 });
-
+Route::get('test', function () {
+    return 'test';
+});
 Route::get('/{slug?}', Home::class)->name('home');
