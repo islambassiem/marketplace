@@ -178,9 +178,7 @@
                 @endforeach
             </tbody>
         </table>
-        <div class="mt-4">
-            {{ $this->contacts->links() }}
-        </div>
+        <div x-intersect.full="$wire.load()"></div>
     @else
         <div class="flex items-center p-4 my-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 dark:border-red-800"
             role="alert">

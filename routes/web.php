@@ -56,6 +56,7 @@ Route::get('seed', function () {
     }
 });
 Route::get('test', function () {
-    return 'test';
+    $user = App\Models\User::find(1);
+    return $user;
 });
 Route::get('/{slug?}', Home::class)->name('home');

@@ -21,9 +21,9 @@ class Users extends Component
 
     public $search = '';
 
-    public function setLimit($limit)
+    public function load()
     {
-        $this->limit = $limit;
+        $this->limit += 5;
     }
 
     #[Computed()]

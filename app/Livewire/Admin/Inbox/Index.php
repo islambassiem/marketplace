@@ -22,6 +22,11 @@ class Index extends Component
 
     public $readStatus = 'test';
 
+    public function load()
+    {
+        $this->perPage += 5;
+    }
+
     public function toggleFilterType($key)
     {
         $this->resetPage();

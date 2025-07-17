@@ -84,7 +84,7 @@
 
         <flux:navlist variant="outline">
             <flux:navlist.group :heading="__('')" class="grid">
-                <flux:navlist.item class="text-zinc-800! dark:text-zinc-200!" icon="layout-grid"
+                <flux:navlist.item class="text-zinc-800! dark:text-zinc-200! py-5" icon="layout-grid"
                     :href="route('admin.dashboard')" :current="request()->routeIs('admin.dashboard')" wire:navigate>
                     {{ __('Dashboard') }}
                 </flux:navlist.item>
@@ -93,7 +93,7 @@
 
         <flux:navlist variant="outline">
             <flux:navlist.group :heading="__('')" class="grid">
-                <flux:navlist.item class="text-zinc-800! dark:text-zinc-200!" icon="users"
+                <flux:navlist.item class="text-zinc-800! dark:text-zinc-200! py-5 " icon="users"
                     :href="route('admin.users')" :current="request()->routeIs('admin.users')" wire:navigate>
                     {{ __('Users') }}</flux:navlist.item>
             </flux:navlist.group>
@@ -101,7 +101,15 @@
 
         <flux:navlist variant="outline">
             <flux:navlist.group :heading="__('')" class="grid">
-                <flux:navlist.item class="text-zinc-800! dark:text-zinc-200!" icon="inbox-arrow-down"
+                <flux:navlist.item class="text-zinc-800! dark:text-zinc-200! py-5 " icon="users"
+                    :href="route('admin.ads')" :current="request()->routeIs('admin.ads')" wire:navigate>
+                    {{ __('Ads') }}</flux:navlist.item>
+            </flux:navlist.group>
+        </flux:navlist>
+
+        <flux:navlist variant="outline">
+            <flux:navlist.group :heading="__('')" class="grid">
+                <flux:navlist.item class="text-zinc-800! dark:text-zinc-200! py-5" icon="inbox-arrow-down"
                     :href="route('admin.inbox.index')" :current="request()->routeIs('admin.inbox*')" wire:navigate>
                     {{ __('Messages') }}</flux:navlist.item>
             </flux:navlist.group>

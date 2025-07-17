@@ -37,4 +37,9 @@ class Category extends Model
     {
         return $this->hasMany(Post::class);
     }
+
+        public function subCategories()
+    {
+        return $this->where('parent_id', $this->id)->get('id');
+    }
 }
