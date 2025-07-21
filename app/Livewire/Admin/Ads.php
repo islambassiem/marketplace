@@ -2,15 +2,16 @@
 
 namespace App\Livewire\Admin;
 
-use App\Models\Category;
 use App\Models\City;
 use App\Models\Post;
 use Mary\Traits\Toast;
 use Livewire\Component;
+use App\Models\Category;
 use Livewire\Attributes\On;
 use Livewire\WithPagination;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Computed;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 #[Layout('components.layouts.admin')]
 class Ads extends Component
@@ -48,6 +49,16 @@ class Ads extends Component
         $this->dispatch('close-modal');
         $this->success(__('The ad has been deleted successfully'));
     }
+
+    public function deleteImage($image): void
+    {
+        $media = Media::findOrFail($image);
+        $media->delete();
+        $this->dispatch('media-deleted');
+        $this->success(
+            __('The image has been deleted successfully'),
+        );
+    }
     #[Computed()]
     public function provinces()
     {
@@ -83,6 +94,7 @@ class Ads extends Component
     public function posts()
     {
         $posts = Post::withCount('media')
+            ->with('media')
             ->with('user', 'category', 'city.parent')
             ->when($this->search, function ($query) {
                 $search = "%{$this->search}%";

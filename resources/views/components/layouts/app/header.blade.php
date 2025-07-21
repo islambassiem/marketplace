@@ -27,7 +27,7 @@
                 :current="request()->routeIs('chat*')" wire:navigate>
                 {{ __('Messages') }}
             </flux:navbar.item>
-            <flux:navbar.item class="text-zinc-800! dark:text-zinc-200!" icon="microphone" :href="route('contact')"
+            <flux:navbar.item class="text-zinc-800! dark:text-zinc-200!" icon="chat-bubble-bottom-center-text" :href="route('contact')"
                 :current="request()->routeIs('contact*')" wire:navigate>
                 {{ __('Contact us') }}
             </flux:navbar.item>
