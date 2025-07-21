@@ -189,5 +189,9 @@
     "Chat": "دردشة",
     "Admin Dashboard": "لوحة تحكم المدير",
     "Favorite Ads": "الاعلانات المفضلة",
-    "Delete": "حذف"
+    "Delete": "حذف",
+    "Terms of Service": "شروط الخدمة",
+    "Accept": "قبول",
+    "This is a beta version of the platform for testing and feedback only. Not a commercial launch.": "هذه هي نسخة بيتا للبرنامج للتجربة والملاحظات فقط. ليست نسخة تجارية.",
+    "No transactions or sales are taking place at this time.": "لا توجد معاملات او مبيعات في هذا الوقت."
 }

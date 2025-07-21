@@ -54,9 +54,7 @@ Route::get('seed', function () {
                 ->toMediaCollection();
         }
     }
-});
-Route::get('test', function () {
-    $user = App\Models\User::find(1);
-    return $user;
-});
+})->middleware(['auth', 'admin']);
+
+
 Route::get('/{slug?}', Home::class)->name('home');
