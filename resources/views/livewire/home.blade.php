@@ -14,6 +14,16 @@
         </div>
     @endif
     <form wire:submit="query" class="mx-5 mt-5">
+        <div class="mb-5 animate-bounce">
+            <p class="leading-relaxed text-black font-bold text-lg px-4 py-2 border-2 border-orange-400 bg-yellow-100 rounded-md inline-block"
+                :class="document.documentElement.dir === 'rtl' ?
+                    'animate-slideRTL animate-pulseGlow' :
+                    'animate-slideLTR animate-pulseGlow'">
+                <span class="font-bold underline">{{ __('Terms of Service') }}</span> :
+                {{ __('This is a beta version of the platform for testing and feedback only. Not a commercial launch.') }}
+                {{ __('No transactions or sales are taking place at this time.') }}
+            </p>
+        </div>
         <div class="grid grid-cols-12 gap-2">
             <div class="relative col-span-9 sm:col-span-10 lg:col-span-11 ">
                 <label for="search"
@@ -122,7 +132,7 @@
     </div>
 
     <!-- Main modal -->
-    <div id="default-modal" tabindex="-1" aria-hidden="true" x-data="{ show: true }" x-show="show" x-cloak
+    {{-- <div id="default-modal" tabindex="-1" aria-hidden="true" x-data="{ show: true }" x-show="show" x-cloak
         class="flex bg-gray-600/50 dark:bg-gray-800/50 opacity-95 overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 max-h-full">
         <div class="relative p-4 w-full max-w-2xl max-h-full">
             <!-- Modal content -->
@@ -151,7 +161,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
 
     <div x-intersect.full="$wire.load()"></div>
