@@ -193,5 +193,8 @@
     "Terms of Service": "شروط الخدمة",
     "Accept": "قبول",
     "This is a beta version of the platform for testing and feedback only. Not a commercial launch.": "هذه هي نسخة بيتا للبرنامج للتجربة والملاحظات فقط. ليست نسخة تجارية.",
-    "No transactions or sales are taking place at this time.": "لا توجد معاملات او مبيعات في هذا الوقت."
+    "No transactions or sales are taking place at this time.": "لا توجد معاملات او مبيعات في هذا الوقت.",
+
+    "Reply": "رد",
+    "The message has been sent successfully!": "تم ارسال الرسالة بنجاح!"
 }

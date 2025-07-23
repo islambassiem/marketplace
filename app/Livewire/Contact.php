@@ -4,7 +4,13 @@ namespace App\Livewire;
 
 use App\Actions\Contact\CreateContactAction;
 use App\Http\Requests\CreateContactRequest;
+use App\Mail\ContactMail;
+use App\Models\Contact as ModelsContact;
+use App\Models\User;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
+
+use function PHPSTORM_META\type;
 
 class Contact extends Component
 {
@@ -32,6 +38,17 @@ class Contact extends Component
     {
         $validated = $this->validate();
         $action->handle($validated);
+        $admins = User::where('is_admin', true)->get()->pluck('email', 'name')->toArray();
+
+        foreach ($admins as $name => $email) {
+            Mail::to($email)->send(new ContactMail(
+                subject: $this->subject,
+                intro: 'Hi ' . $name,
+                content: $this->body,
+                type: ModelsContact::TYPES[$validated['type']],
+            ));
+        }
+
         session()->flash('success', __('Your message has been sent successfully!'));
         $this->redirectIntended(route('home'), true);
     }

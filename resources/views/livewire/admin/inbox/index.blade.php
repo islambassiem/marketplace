@@ -150,10 +150,10 @@
                                             d="M3.5 1.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm0 6.041a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm0 5.959a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z" />
                                     </svg>
                                 </button>
-                                <ul x-show="open" x-on:click.away="open = false"
+                                <div x-show="open" x-on:click.away="open = false"
                                     wire:click="toggleRead({{ $contact->id }})" x-on:click="open = false"
                                     class="space-y-4 absolute z-50 w-56 p-3 rounded-lg shadow-sm dark:bg-gray-700 top-8 right-0 rtl:left-0 rtl:right-auto mt-2 bg-white">
-                                    <li
+                                    <div
                                         class="flex items-center gap-2 text-blue-600 dark:text-blue-500 cursor-pointer ms-4 hover:underline">
                                         <span>
                                             @if ($contact->is_read)
@@ -163,15 +163,15 @@
                                             @endif
                                         </span>
                                         {{ $contact->is_read ? __('Mark as unread') : __('Mark as read') }}
-                                    </li>
-                                    <li
-                                        class="flex items-center gap-2 text-blue-600 dark:text-blue-500 cursor-pointer ms-4 hover:underline">
-                                        <flux:icon.document-magnifying-glass />
-                                        <a href="{{ route('admin.inbox.show', $contact) }}">
+                                    </div>
+                                    <a href="{{ route('admin.inbox.show', $contact) }}">
+                                        <div
+                                            class="flex items-center gap-2 text-blue-600 dark:text-blue-500 cursor-pointer ms-4 hover:underline">
+                                            <flux:icon.document-magnifying-glass />
                                             {{ __('Details') }}
-                                        </a>
-                                    </li>
-                                </ul>
+                                        </div>
+                                    </a>
+                                </div>
                             </div>
                         </td>
                     </tr>

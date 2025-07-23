@@ -3,6 +3,7 @@
 use App\Livewire\Admin\Ads;
 use App\Livewire\Admin\Dashboard;
 use App\Livewire\Admin\Inbox\Index;
+use App\Livewire\Admin\Inbox\Reply;
 use App\Livewire\Admin\Inbox\Show;
 use App\Livewire\Admin\Users;
 use Illuminate\Support\Facades\Route;
@@ -14,4 +15,5 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::get('ads', Ads::class)->name('admin.ads');
     Route::get('inbox', Index::class)->name('admin.inbox.index');
     Route::get('inbox/{contact}/show', Show::class)->name('admin.inbox.show');
+    Route::get('inbox/reply/{contact}', Reply::class)->name('admin.inbox.reply');
 });

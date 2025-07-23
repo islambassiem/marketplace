@@ -18,6 +18,8 @@ class Contact extends Model
         'type',
         'subject',
         'body',
+        'status',
+        'is_read',
     ];
 
     public const TYPES = [
